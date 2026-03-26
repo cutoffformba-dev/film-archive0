@@ -295,11 +295,13 @@ async function fetchAll() {
 async function syncType(type) {
   showLoading('儲存中...');
   try {
-    await fetch(API, {
-      method: 'POST',
-      body: JSON.stringify({ action: 'save', type, data: data[type] }),
-    });
+    const payload = encodeURIComponent(JSON.stringify(data[type]));
+    const url = API + '?action=save&type=' + type + '&data=' + payload;
+    const res = await fetch(url);
+    const result = await res.json();
+    if (!result.success) throw new Error('save failed');
   } catch(e) {
+    console.error('Sync error', e);
     alert('儲存失敗，請稍後再試');
   }
   hideLoading();
