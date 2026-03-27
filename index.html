@@ -467,13 +467,16 @@ async function uploadToCloudinary(file){
   showLoad('上傳照片中...');
   try{
     const res=await fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`,{method:'POST',body:fd});
-    const data=await res.json();
+    const json=await res.json();
     hideLoad();
-    if(data.secure_url)return data.secure_url;
-    throw new Error('upload failed');
+    if(json.secure_url)return json.secure_url;
+    console.error('Cloudinary error:',JSON.stringify(json));
+    alert('上傳失敗：'+( json.error?.message||JSON.stringify(json)));
+    return null;
   }catch(e){
     hideLoad();
-    alert('照片上傳失敗，請稍後再試');
+    console.error('Upload exception:',e);
+    alert('上傳失敗：'+e.message);
     return null;
   }
 }
