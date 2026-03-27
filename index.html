@@ -4,217 +4,308 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FILM LOG</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+TC:wght@300;400;500&family=Space+Mono:wght@400;700&family=Playfair+Display:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+TC:wght@300;400;500;700&family=Space+Mono:wght@400;700&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
 <style>
-:root{--red:#d42b14;--red2:#b02010;--red-pale:#fff2f0;--red-light:#fde8e5;--cream:#faf6f0;--cream2:#f2ece4;--cream3:#e8e0d6;--cream4:#ede4d8;--white:#ffffff;--warm:#fffcf8;--text:#2a1f1a;--text2:#7a6a60;--text3:#b0a098;--border:rgba(42,31,26,0.12);--border2:rgba(42,31,26,0.22);--w:210px;}
+:root{
+  --navy:#1a2a4a;--navy2:#243660;--navy3:#0f1d36;--navy-pale:#eef2f8;
+  --red:#d42b14;--red2:#b02010;--red-pale:#fff2f0;
+  --cream:#faf6f0;--cream2:#f2ece4;--cream3:#e8e0d6;--cream4:#ede4d8;
+  --white:#ffffff;--warm:#fffcf8;
+  --text:#1a1410;--text2:#6a5a50;--text3:#a89888;
+  --border:rgba(26,42,74,0.1);--border2:rgba(26,42,74,0.2);
+  --w:220px;
+}
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Noto Sans TC',sans-serif;background:var(--warm);color:var(--text);display:flex;min-height:100vh;font-size:13px;line-height:1.6;}
-nav{width:var(--w);background:var(--red);min-height:100vh;position:fixed;top:0;left:0;bottom:0;display:flex;flex-direction:column;z-index:100;}
-.nav-head{padding:24px 20px 18px;border-bottom:1px solid rgba(255,255,255,0.15);}
-.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:32px;color:#fff;letter-spacing:0.06em;line-height:1;}
-.nav-logo-sub{font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,0.5);letter-spacing:0.18em;text-transform:uppercase;margin-top:4px;}
-.nav-body{flex:1;padding:10px 0;}
-.nav-lbl{font-family:'Space Mono',monospace;font-size:8px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.4);padding:16px 20px 4px;border-top:1px solid rgba(255,255,255,0.08);margin-top:4px;}.nav-lbl:first-child{border-top:none;margin-top:0;}
-.nav-item{display:flex;align-items:center;padding:10px 20px;cursor:pointer;color:rgba(255,255,255,0.6);font-size:12px;letter-spacing:0.03em;transition:all 0.12s;border-left:3px solid transparent;}
-.nav-item:hover{color:#fff;background:rgba(255,255,255,0.1);}
-.nav-item.active{color:#fff;border-left-color:#fff;background:rgba(255,255,255,0.15);font-weight:500;}
-.nav-item-jp{font-size:10px;color:rgba(255,255,255,0.35);display:block;font-weight:300;}
-.nav-item.active .nav-item-jp{color:rgba(255,255,255,0.55);}
-.nav-foot{margin-top:auto;padding:14px 20px;border-top:1px solid rgba(255,255,255,0.12);}
-.nav-stat-row{display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,0.35);margin-bottom:4px;}
-.nav-stat-val{color:rgba(255,255,255,0.65);}
+
+/* SIDEBAR */
+nav{width:var(--w);background:var(--navy);min-height:100vh;position:fixed;top:0;left:0;bottom:0;display:flex;flex-direction:column;z-index:100;}
+.nav-head{padding:22px 20px 16px;border-bottom:1px solid rgba(255,255,255,0.1);}
+.nav-vol{font-family:'Space Mono',monospace;font-size:8px;color:rgba(255,255,255,0.35);letter-spacing:0.25em;text-transform:uppercase;margin-bottom:6px;}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:36px;color:#fff;letter-spacing:0.06em;line-height:0.9;}
+.nav-logo em{color:var(--red);font-style:normal;}
+.nav-logo-sub{font-family:'Playfair Display',serif;font-style:italic;font-size:11px;color:rgba(255,255,255,0.4);margin-top:6px;letter-spacing:0.05em;}
+.nav-body{flex:1;padding:8px 0;}
+.nav-lbl{font-family:'Space Mono',monospace;font-size:8px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.3);padding:14px 20px 4px;border-top:1px solid rgba(255,255,255,0.06);margin-top:4px;}
+.nav-lbl:first-child{border-top:none;margin-top:0;}
+.nav-item{display:flex;align-items:center;gap:10px;padding:9px 20px;cursor:pointer;color:rgba(255,255,255,0.55);font-size:12px;font-weight:400;letter-spacing:0.03em;transition:all 0.12s;border-left:3px solid transparent;}
+.nav-item:hover{color:#fff;background:rgba(255,255,255,0.07);}
+.nav-item.active{color:#fff;border-left-color:var(--red);background:rgba(255,255,255,0.1);font-weight:500;}
+.nav-item-jp{font-family:'Playfair Display',serif;font-style:italic;font-size:10px;color:rgba(255,255,255,0.3);display:block;font-weight:400;}
+.nav-item.active .nav-item-jp{color:rgba(255,255,255,0.5);}
+.nav-dot{width:5px;height:5px;border-radius:50%;background:currentColor;flex-shrink:0;opacity:0.5;}
+.nav-foot{margin-top:auto;padding:14px 20px;border-top:1px solid rgba(255,255,255,0.08);}
+.nav-stat-row{display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,0.3);margin-bottom:5px;}
+.nav-stat-val{color:rgba(255,255,255,0.6);}
+
+/* MAIN */
 main{margin-left:var(--w);flex:1;min-height:100vh;}
 .page{display:none;}.page.active{display:block;}
-.topbar{background:var(--white);border-bottom:2px solid var(--red);padding:0 36px;display:flex;justify-content:space-between;align-items:center;min-height:72px;}
-.topbar-title{font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--text);letter-spacing:0.06em;line-height:1;}.topbar-sub{font-size:11px;color:var(--text3);letter-spacing:0.06em;margin-top:2px;font-family:'Playfair Display',serif;font-style:italic;}
-.topbar-sub{font-size:11px;color:var(--text3);letter-spacing:0.06em;margin-top:2px;}
-.btn-add{display:flex;align-items:center;gap:6px;padding:9px 20px;background:var(--red);color:#fff;border:none;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:background 0.12s;border-radius:2px;}
+
+/* TOPBAR */
+.topbar{background:var(--white);border-bottom:3px solid var(--navy);padding:0 40px;display:flex;justify-content:space-between;align-items:center;min-height:72px;}
+.topbar-left{}
+.topbar-title{font-family:'Bebas Neue',sans-serif;font-size:38px;color:var(--text);letter-spacing:0.06em;line-height:1;}
+.topbar-sub{font-family:'Playfair Display',serif;font-style:italic;font-size:12px;color:var(--text3);margin-top:1px;}
+.btn-add{display:flex;align-items:center;gap:6px;padding:9px 22px;background:var(--red);color:#fff;border:none;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:background 0.12s;border-radius:2px;}
 .btn-add:hover{background:var(--red2);}
 .content{padding:32px 40px 80px;}
-.home-hero{background:var(--red);padding:0;margin-bottom:28px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;overflow:hidden;border-radius:4px;}
-.home-stat{padding:0 24px;border-right:1px solid rgba(255,255,255,0.2);}
-.home-stat:first-child{padding-left:0;}.home-stat:last-child{border-right:none;}
-.home-stat-lbl{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:6px;}
-.home-stat-val{font-family:'Bebas Neue',sans-serif;font-size:40px;color:#fff;line-height:1;}.home-stat:first-child .home-stat-val{font-size:56px;}.home-stat:first-child .home-stat-lbl{font-size:10px;letter-spacing:0.25em;}
-.home-stat-sub{font-family:'Space Mono',monospace;font-size:11px;color:rgba(255,255,255,0.45);margin-top:3px;}
-.featured-wrap{position:relative;margin-bottom:24px;background:var(--cream2);border:1.5px solid var(--border);border-radius:4px;overflow:hidden;cursor:pointer;}
+
+/* HOME HERO */
+.home-hero{background:var(--navy);padding:0;margin-bottom:28px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;border-radius:4px;overflow:hidden;}
+.home-stat{padding:24px 28px;border-right:1px solid rgba(255,255,255,0.1);}
+.home-stat:first-child{padding:32px 36px;background:rgba(0,0,0,0.15);}
+.home-stat:last-child{border-right:none;}
+.home-stat-lbl{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:6px;}
+.home-stat-val{font-family:'Bebas Neue',sans-serif;font-size:40px;color:#fff;line-height:1;}
+.home-stat:first-child .home-stat-val{font-size:52px;}
+.home-stat-sub{font-family:'Space Mono',monospace;font-size:11px;color:rgba(255,255,255,0.35);margin-top:4px;}
+
+/* SECTION HEAD */
+.section-head{display:flex;align-items:baseline;gap:12px;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--navy);}
+.section-en{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:0.06em;color:var(--text);}
+.section-jp{font-family:'Playfair Display',serif;font-style:italic;font-size:12px;color:var(--text3);}
+.section-count{font-family:'Space Mono',monospace;font-size:11px;color:var(--text3);margin-left:auto;}
+
+/* FEATURED */
+.featured-wrap{position:relative;margin-bottom:28px;background:var(--cream2);border:1.5px solid var(--border);border-radius:4px;overflow:hidden;cursor:pointer;}
 .featured-img{width:100%;height:320px;object-fit:cover;display:block;}
 .featured-ph{height:320px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;}
-.featured-ph-icon{font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--cream3);letter-spacing:0.05em;}
+.featured-ph-icon{font-family:'Bebas Neue',sans-serif;font-size:52px;color:var(--cream3);letter-spacing:0.05em;}
 .featured-ph-lbl{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--text3);}
-.featured-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(42,31,26,0.8) 0%,rgba(42,31,26,0.2) 40%,transparent 70%);display:flex;align-items:flex-end;padding:24px 28px;pointer-events:none;}
-.featured-caption-title{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:0.05em;line-height:1;color:#fff;}.featured-caption-sub{font-family:'Playfair Display',serif;font-style:italic;font-size:13px;color:rgba(255,255,255,0.7);letter-spacing:0.03em;margin-top:6px;}
-.featured-caption-sub{font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,0.6);letter-spacing:0.1em;margin-top:4px;}
-.featured-edit-btn{position:absolute;top:12px;right:12px;background:rgba(255,255,255,0.9);border:none;color:var(--text);font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;padding:6px 12px;cursor:pointer;border-radius:2px;transition:all 0.12s;}
+.featured-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(26,42,74,0.85) 0%,rgba(26,42,74,0.2) 40%,transparent 70%);display:flex;align-items:flex-end;padding:24px 28px;pointer-events:none;}
+.featured-caption-title{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:0.05em;line-height:1;color:#fff;}
+.featured-caption-sub{font-family:'Playfair Display',serif;font-style:italic;font-size:13px;color:rgba(255,255,255,0.7);margin-top:6px;}
+.featured-edit-btn{position:absolute;top:12px;right:12px;background:rgba(255,255,255,0.92);border:none;color:var(--text);font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;padding:6px 12px;cursor:pointer;border-radius:2px;transition:all 0.12s;}
 .featured-edit-btn:hover{background:var(--red);color:#fff;}
-.home-cols{display:grid;grid-template-columns:3fr 2fr;gap:24px;margin-bottom:28px;}.home-cols.reverse{grid-template-columns:2fr 3fr;}
-.section-head{display:flex;align-items:baseline;gap:12px;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(--red);}.section-italic{font-family:'Playfair Display',serif;font-style:italic;font-size:13px;color:var(--text3);margin-left:auto;}
-.section-en{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:0.06em;color:var(--text);}
-.section-jp{font-size:11px;color:var(--text3);font-family:'Playfair Display',serif;font-style:italic;}
-.section-count{font-family:'Space Mono',monospace;font-size:11px;color:var(--text3);margin-left:auto;}
-.cam-strip{display:flex;gap:10px;overflow-x:auto;padding-bottom:4px;}
-.cam-strip::-webkit-scrollbar{height:3px;}.cam-strip::-webkit-scrollbar-track{background:var(--cream2);}.cam-strip::-webkit-scrollbar-thumb{background:var(--cream3);border-radius:2px;}
-.cam-thumb{flex-shrink:0;width:100px;cursor:pointer;transition:transform 0.12s;}
-.cam-thumb:hover{transform:translateY(-2px);}
-.cam-thumb-img{width:100px;height:70px;background:var(--cream2);border:1.5px solid var(--border);border-radius:3px;overflow:hidden;display:flex;align-items:center;justify-content:center;margin-bottom:6px;}
+
+/* HOME COLS */
+.home-cols{display:grid;grid-template-columns:3fr 2fr;gap:24px;margin-bottom:28px;}
+.home-cols.reverse{grid-template-columns:2fr 3fr;}
+
+/* CAM STRIP */
+.cam-strip{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;}
+.cam-strip::-webkit-scrollbar{height:3px;}.cam-strip::-webkit-scrollbar-track{background:var(--cream2);}.cam-strip::-webkit-scrollbar-thumb{background:var(--navy);border-radius:2px;opacity:0.3;}
+.cam-thumb{flex-shrink:0;width:96px;cursor:pointer;transition:transform 0.12s;}
+.cam-thumb:hover{transform:translateY(-3px);}
+.cam-thumb-img{width:96px;height:68px;background:var(--cream2);border:1.5px solid var(--border);border-radius:3px;overflow:hidden;display:flex;align-items:center;justify-content:center;margin-bottom:5px;}
 .cam-thumb-img img{width:100%;height:100%;object-fit:cover;}
-.cam-thumb-ph{font-family:'Bebas Neue',sans-serif;font-size:14px;color:var(--cream3);letter-spacing:0.05em;}
-.cam-thumb-name{font-family:'Space Mono',monospace;font-size:9px;color:var(--text2);letter-spacing:0.05em;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.cam-thumb-ph{font-family:'Bebas Neue',sans-serif;font-size:13px;color:var(--cream3);}
+.cam-thumb-name{font-family:'Space Mono',monospace;font-size:9px;color:var(--text2);text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .cam-thumb-model{font-size:10px;color:var(--text3);text-align:center;}
-.warn-list{display:flex;flex-direction:column;gap:6px;}
-.warn-item{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:var(--white);border:1.5px solid var(--border);border-radius:3px;transition:border-color 0.12s;}.warn-item:hover{border-color:var(--red2);}
+
+/* WARN / PENDING */
+.warn-list,.pending-list{display:flex;flex-direction:column;gap:6px;}
+.warn-item{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:var(--white);border:1.5px solid var(--border);border-radius:3px;transition:border-color 0.12s;}
+.warn-item:hover{border-color:var(--navy);}
 .warn-item.zero{border-color:var(--red);background:var(--red-pale);}
 .warn-name{font-weight:500;font-size:13px;}.warn-brand{font-size:11px;color:var(--text3);}
 .warn-badge{font-family:'Space Mono',monospace;font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;white-space:nowrap;}
-.badge-low{background:#fff8e0;color:#a06010;}.badge-out{background:var(--red-pale);color:var(--red);}
-.pending-list{display:flex;flex-direction:column;gap:6px;}
+.badge-low{background:var(--navy-pale);color:var(--navy);}.badge-out{background:var(--red-pale);color:var(--red);}
 .pending-item{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:var(--white);border:1.5px solid var(--border);border-radius:3px;}
 .pending-film{font-weight:500;font-size:13px;}.pending-cam{font-size:11px;color:var(--text3);}
-.pending-date{font-family:'Space Mono',monospace;font-size:10px;color:var(--text3);white-space:nowrap;}
+.pending-date{font-family:'Space Mono',monospace;font-size:10px;color:var(--text3);}
+.muted{font-size:12px;color:var(--text3);padding:12px 0;font-family:'Playfair Display',serif;font-style:italic;}
+
+/* ROLL TABLE */
 .roll-wrap{background:var(--white);border:1.5px solid var(--border);border-radius:4px;overflow:hidden;}
 .roll-table{width:100%;border-collapse:collapse;}
-.roll-table th{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--text2);background:var(--cream4);padding:10px 14px;text-align:left;font-weight:400;border-bottom:1.5px solid var(--border);}
+.roll-table th{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--text2);background:var(--navy-pale);padding:10px 14px;text-align:left;font-weight:400;border-bottom:1.5px solid var(--border);}
 .roll-table td{padding:12px 14px;border-bottom:1px solid var(--border);font-size:12px;vertical-align:middle;}
 .roll-table tr:last-child td{border-bottom:none;}
 .roll-table tr:hover td{background:var(--cream);}
-.roll-no{font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--text3);line-height:1;}
+.roll-no{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--text3);line-height:1;}
 .roll-film-name{font-weight:500;color:var(--text);font-size:13px;}
-.roll-film-note{font-size:10px;color:var(--text3);margin-top:1px;}
+.roll-film-note{font-size:10px;color:var(--text3);margin-top:1px;font-family:'Playfair Display',serif;font-style:italic;}
 .dev-tag{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.08em;text-transform:uppercase;padding:3px 8px;border:1px solid currentColor;border-radius:20px;white-space:nowrap;}
-.dev-pending{color:var(--text3);}.dev-done{color:#207840;}.dev-scan{color:#b06010;}
+.dev-pending{color:var(--text3);}.dev-done{color:#207840;}.dev-scan{color:var(--navy);}
+.btn-row-edit{background:none;border:1px solid var(--border);color:var(--text2);cursor:pointer;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.1em;padding:3px 8px;border-radius:2px;transition:all 0.12s;margin-right:4px;}
+.btn-row-edit:hover{background:var(--navy);color:#fff;border-color:var(--navy);}
+.btn-row-del{background:none;border:1px solid var(--border);color:var(--text3);cursor:pointer;font-size:11px;padding:3px 7px;border-radius:2px;transition:all 0.12s;margin-right:4px;}
+.btn-row-del:hover{background:var(--red-pale);color:var(--red);border-color:var(--red);}
+.btn-row-album{background:none;border:1px solid var(--border);color:var(--navy);cursor:pointer;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.1em;padding:3px 8px;border-radius:2px;transition:all 0.12s;}
+.btn-row-album:hover{background:var(--navy);color:#fff;border-color:var(--navy);}
+
+/* CAMERA CARDS */
 .cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;}
 .camera-card{background:var(--white);border:1.5px solid var(--border);border-radius:4px;overflow:hidden;transition:box-shadow 0.12s;}
-.camera-card:hover{box-shadow:4px 4px 0 var(--red);border-color:var(--red);}
+.camera-card:hover{box-shadow:4px 4px 0 var(--navy);border-color:var(--navy);}
 .cam-img{height:160px;background:var(--cream2);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;cursor:pointer;border-bottom:1.5px solid var(--border);}
 .cam-img img{width:100%;height:100%;object-fit:cover;}
 .cam-img-ph{display:flex;flex-direction:column;align-items:center;gap:6px;}
-.cam-img-ph-icon{font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--cream3);letter-spacing:0.05em;}
+.cam-img-ph-icon{font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--cream3);}
 .cam-img-ph-lbl{font-size:10px;color:var(--text3);letter-spacing:0.1em;}
-.img-hover{position:absolute;inset:0;background:rgba(212,43,20,0.75);display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#fff;opacity:0;transition:opacity 0.15s;}
+.img-hover{position:absolute;inset:0;background:rgba(26,42,74,0.75);display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#fff;opacity:0;transition:opacity 0.15s;}
 .cam-img:hover .img-hover,.film-img:hover .img-hover{opacity:1;}
 .cam-body{padding:14px;}
 .cam-type-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;}
 .cam-type{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text3);}
-.status-pill{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.08em;padding:2px 7px;border-radius:20px;text-transform:uppercase;}
-.status-active{background:var(--red-pale);color:var(--red);}
+.status-pill{font-family:'Space Mono',monospace;font-size:9px;padding:2px 8px;border-radius:2px;text-transform:uppercase;letter-spacing:0.08em;}
+.status-active{background:var(--navy-pale);color:var(--navy);}
 .status-shelf{background:var(--cream2);color:var(--text3);}
-.cam-name{font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--text);letter-spacing:0.03em;line-height:1;margin-bottom:4px;}.cam-italic{font-family:'Playfair Display',serif;font-style:italic;font-size:11px;color:var(--text3);margin-bottom:8px;display:block;}
+.cam-name{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--text);letter-spacing:0.03em;line-height:1;margin-bottom:3px;}
+.cam-italic{font-family:'Playfair Display',serif;font-style:italic;font-size:11px;color:var(--text3);display:block;margin-bottom:6px;}
 .cam-spec{font-size:11px;color:var(--text2);line-height:1.7;}
 .cam-price{font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:var(--red);margin-top:10px;padding-top:10px;border-top:1px solid var(--border);}
 .card-actions{display:flex;gap:6px;margin-top:10px;}
-.lens-section{border-top:1px solid var(--border);margin-top:10px;padding-top:10px;display:none;}
-.lens-section.open{display:block;}
-.lens-toggle{width:100%;padding:6px;background:none;border:1px solid var(--border);color:var(--text3);font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;transition:all 0.12s;border-radius:2px;margin-top:10px;display:flex;justify-content:space-between;align-items:center;}
-.lens-toggle:hover{border-color:var(--red);color:var(--red);}
-.lens-toggle.open{color:var(--red);border-color:var(--red);background:var(--red-pale);}
-.lens-list{display:flex;flex-direction:column;gap:6px;margin-bottom:10px;}
-.lens-item{display:flex;align-items:center;justify-content:space-between;padding:8px 10px;background:var(--cream);border-radius:2px;border:1px solid var(--border);}
-.lens-item-info{display:flex;flex-direction:column;gap:2px;}
-.lens-focal{font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--text);letter-spacing:0.05em;line-height:1;}
-.lens-name{font-size:10px;color:var(--text3);letter-spacing:0.03em;}
-.lens-aperture{font-family:'Space Mono',monospace;font-size:11px;color:var(--red);font-weight:700;}
-.lens-del{background:none;border:none;color:var(--text3);cursor:pointer;font-size:12px;padding:4px 6px;transition:color 0.12s;border-radius:2px;}
-.lens-del:hover{color:var(--red);background:var(--red-pale);}
-.lens-add-row{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:6px;margin-top:6px;}
-.lens-input{background:var(--white);border:1.5px solid var(--border2);color:var(--text);font-family:'Noto Sans TC',sans-serif;font-size:12px;padding:6px 8px;border-radius:2px;outline:none;transition:border-color 0.12s;width:100%;}
-.lens-input:focus{border-color:var(--red);}
-.lens-add-btn{padding:6px 10px;background:var(--red);border:none;color:#fff;font-family:'Space Mono',monospace;font-size:10px;cursor:pointer;border-radius:2px;white-space:nowrap;transition:background 0.12s;}
-.lens-add-btn:hover{background:var(--red2);}
-.lens-empty{font-size:11px;color:var(--text3);padding:6px 0;font-style:italic;}
 .btn-edit{flex:1;padding:6px;background:var(--cream2);border:1px solid var(--border);color:var(--text2);font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.12s;border-radius:2px;}
-.btn-edit:hover{background:var(--red);color:#fff;border-color:var(--red);}
+.btn-edit:hover{background:var(--navy);color:#fff;border-color:var(--navy);}
 .btn-del-card{padding:6px 10px;background:var(--cream2);border:1px solid var(--border);color:var(--text3);font-size:11px;cursor:pointer;transition:all 0.12s;border-radius:2px;}
 .btn-del-card:hover{background:var(--red-pale);color:var(--red);border-color:var(--red);}
+
+/* LENS */
+.card-actions{display:flex;gap:6px;margin-top:10px;}
+.lens-toggle{width:100%;padding:6px;background:none;border:1px solid var(--border);color:var(--text3);font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;transition:all 0.12s;border-radius:2px;margin-top:8px;display:flex;justify-content:space-between;align-items:center;}
+.lens-toggle:hover{border-color:var(--navy);color:var(--navy);}
+.lens-toggle.open{color:var(--navy);border-color:var(--navy);background:var(--navy-pale);}
+.lens-section{border-top:1px solid var(--border);margin-top:8px;padding-top:10px;display:none;}
+.lens-section.open{display:block;}
+.lens-list{display:flex;flex-direction:column;gap:6px;margin-bottom:10px;}
+.lens-item{display:flex;align-items:center;justify-content:space-between;padding:8px 10px;background:var(--cream);border-radius:2px;border:1px solid var(--border);}
+.lens-focal{font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--text);letter-spacing:0.05em;line-height:1;}
+.lens-name{font-size:10px;color:var(--text3);}
+.lens-aperture{font-family:'Space Mono',monospace;font-size:11px;color:var(--navy);font-weight:700;}
+.lens-del{background:none;border:none;color:var(--text3);cursor:pointer;font-size:12px;padding:4px 6px;transition:color 0.12s;border-radius:2px;}
+.lens-del:hover{color:var(--red);background:var(--red-pale);}
+.lens-add-row{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:6px;}
+.lens-input{background:var(--white);border:1.5px solid var(--border2);color:var(--text);font-family:'Noto Sans TC',sans-serif;font-size:12px;padding:6px 8px;border-radius:2px;outline:none;transition:border-color 0.12s;width:100%;}
+.lens-input:focus{border-color:var(--navy);}
+.lens-add-btn{padding:6px 10px;background:var(--navy);border:none;color:#fff;font-family:'Space Mono',monospace;font-size:10px;cursor:pointer;border-radius:2px;transition:background 0.12s;}
+.lens-add-btn:hover{background:var(--navy2);}
+.lens-empty{font-size:11px;color:var(--text3);padding:6px 0;font-family:'Playfair Display',serif;font-style:italic;}
+
+/* FILM CARDS */
 .film-card{background:var(--white);border:1.5px solid var(--border);border-radius:4px;overflow:hidden;transition:box-shadow 0.12s;}
-.film-card:hover{box-shadow:4px 4px 0 var(--red);border-color:var(--red);}
+.film-card:hover{box-shadow:4px 4px 0 var(--navy);border-color:var(--navy);}
 .film-img{height:130px;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;cursor:pointer;border-bottom:1.5px solid var(--border);}
 .film-img img{width:100%;height:100%;object-fit:cover;}
 .film-color-ph{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;}
 .film-color-name{font-family:'Bebas Neue',sans-serif;font-size:20px;color:rgba(255,255,255,0.85);letter-spacing:0.05em;}
 .film-color-brand{font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,0.5);letter-spacing:0.15em;text-transform:uppercase;}
 .film-body{padding:12px 14px;}
+.film-color-bar{height:4px;margin:-12px -14px 12px;}
 .film-tags{display:flex;gap:6px;align-items:center;margin-bottom:6px;}
 .film-tag{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;padding:2px 7px;border:1px solid currentColor;border-radius:2px;}
-.tag-color{color:#b06010;}.tag-bw{color:var(--text2);}.tag-slide{color:var(--red);}.tag-instant{color:#3060b0;}
+.tag-color{color:#b06010;}.tag-bw{color:var(--text2);}.tag-slide{color:var(--red);}.tag-instant{color:var(--navy);}
 .film-iso{font-family:'Space Mono',monospace;font-size:10px;color:var(--text3);}
 .film-name{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--text);letter-spacing:0.03em;line-height:1;}
 .film-brand{font-size:11px;color:var(--text3);margin-bottom:8px;}
-.film-foot{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border);}.film-color-bar{height:4px;margin:-12px -14px 12px;}
+.film-foot{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border);}
 .film-stock{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;}
 .stock-ok{color:var(--text);}.stock-zero{color:var(--red);}
 .film-price-sm{font-family:'Space Mono',monospace;font-size:10px;color:var(--text3);}
-.btn-row-edit{background:none;border:1px solid var(--border);color:var(--text2);cursor:pointer;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.1em;padding:3px 8px;border-radius:2px;transition:all 0.12s;margin-right:4px;}
-.btn-row-edit:hover{background:var(--red);color:#fff;border-color:var(--red);}
-.btn-row-del{background:none;border:1px solid var(--border);color:var(--text3);cursor:pointer;font-size:11px;padding:3px 7px;border-radius:2px;transition:all 0.12s;}
-.btn-row-del:hover{background:var(--red-pale);color:var(--red);border-color:var(--red);}
-.overlay{display:none;position:fixed;inset:0;background:rgba(42,31,26,0.55);z-index:300;align-items:center;justify-content:center;padding:20px;}
+
+/* ALBUM PAGE */
+#page-album{background:var(--warm);}
+.album-back{display:flex;align-items:center;gap:8px;background:none;border:none;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--navy);cursor:pointer;padding:0;margin-bottom:20px;transition:opacity 0.12s;}
+.album-back:hover{opacity:0.7;}
+.album-info{background:var(--navy);color:#fff;padding:20px 28px;border-radius:4px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.album-roll-name{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:0.05em;line-height:1;}
+.album-roll-meta{font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,0.5);margin-top:4px;letter-spacing:0.1em;}
+.album-add-btn{display:flex;align-items:center;gap:6px;padding:9px 18px;background:var(--red);color:#fff;border:none;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:background 0.12s;white-space:nowrap;}
+.album-add-btn:hover{background:var(--red2);}
+.album-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:3px;}
+.album-photo{aspect-ratio:3/2;background:var(--cream2);position:relative;overflow:hidden;cursor:pointer;}
+.album-photo img{width:100%;height:100%;object-fit:cover;transition:transform 0.2s;}
+.album-photo:hover img{transform:scale(1.04);}
+.album-photo-del{position:absolute;top:6px;right:6px;background:rgba(26,20,16,0.7);color:#fff;border:none;width:22px;height:22px;border-radius:50%;cursor:pointer;font-size:11px;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.15s;}
+.album-photo:hover .album-photo-del{opacity:1;}
+.album-photo-del:hover{background:var(--red);}
+.album-empty{padding:48px;text-align:center;}
+.album-empty-icon{font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--cream3);margin-bottom:8px;}
+.album-empty-sub{font-family:'Playfair Display',serif;font-style:italic;font-size:13px;color:var(--text3);}
+
+/* LIGHTBOX */
+#lightbox{display:none;position:fixed;inset:0;background:rgba(10,16,30,0.95);z-index:500;align-items:center;justify-content:center;}
+#lightbox.show{display:flex;}
+#lightbox img{max-width:90vw;max-height:88vh;object-fit:contain;border-radius:2px;}
+.lb-close{position:absolute;top:16px;right:20px;background:none;border:none;color:rgba(255,255,255,0.6);font-size:28px;cursor:pointer;line-height:1;transition:color 0.12s;}
+.lb-close:hover{color:#fff;}
+.lb-prev,.lb-next{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.1);border:none;color:#fff;font-size:20px;cursor:pointer;padding:12px 16px;border-radius:2px;transition:background 0.12s;}
+.lb-prev{left:16px;}.lb-next{right:16px;}
+.lb-prev:hover,.lb-next:hover{background:rgba(255,255,255,0.2);}
+
+/* OVERLAY */
+.overlay{display:none;position:fixed;inset:0;background:rgba(26,42,74,0.6);z-index:300;align-items:center;justify-content:center;padding:20px;}
 .overlay.show{display:flex;}
-.ov-box{background:var(--white);border:2px solid var(--red);border-radius:4px;width:100%;max-width:480px;max-height:90vh;overflow-y:auto;}
-.ov-head{background:var(--red);padding:14px 20px;display:flex;justify-content:space-between;align-items:center;}
+.ov-box{background:var(--white);border:2px solid var(--navy);border-radius:4px;width:100%;max-width:480px;max-height:90vh;overflow-y:auto;}
+.ov-head{background:var(--navy);padding:14px 20px;display:flex;justify-content:space-between;align-items:center;}
 .ov-title{font-family:'Bebas Neue',sans-serif;font-size:24px;color:#fff;letter-spacing:0.05em;}
-.ov-close{background:none;border:none;color:rgba(255,255,255,0.7);font-size:18px;cursor:pointer;padding:0 4px;line-height:1;}
+.ov-close{background:none;border:none;color:rgba(255,255,255,0.6);font-size:18px;cursor:pointer;padding:0 4px;line-height:1;}
 .ov-close:hover{color:#fff;}
 .ov-body{padding:22px;}
 .form-g{margin-bottom:13px;}
 .form-l{display:block;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--text3);margin-bottom:5px;}
 .form-i,.form-s,.form-ta{width:100%;background:var(--cream);border:1.5px solid var(--border2);color:var(--text);font-family:'Noto Sans TC',sans-serif;font-size:13px;padding:9px 11px;border-radius:2px;outline:none;transition:border-color 0.12s;appearance:none;}
-.form-i:focus,.form-s:focus,.form-ta:focus{border-color:var(--red);background:var(--white);}
+.form-i:focus,.form-s:focus,.form-ta:focus{border-color:var(--navy);}
 .form-ta{resize:vertical;min-height:70px;}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
 .form-actions{display:flex;gap:10px;margin-top:20px;}
-.btn-cancel{flex:1;padding:10px;background:var(--cream2);border:1.5px solid var(--border2);color:var(--text2);font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all 0.12s;}
-.btn-cancel:hover{border-color:var(--text2);}
+.btn-cancel{flex:1;padding:10px;background:var(--cream2);border:1.5px solid var(--border2);color:var(--text2);font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;border-radius:2px;}
+.btn-cancel:hover{border-color:var(--navy);}
 .btn-save{flex:2;padding:10px;background:var(--red);border:none;color:#fff;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:background 0.12s;}
 .btn-save:hover{background:var(--red2);}
 .img-upload-box{border:1.5px dashed var(--border2);padding:16px;text-align:center;cursor:pointer;background:var(--cream);border-radius:2px;transition:border-color 0.12s;}
-.img-upload-box:hover{border-color:var(--red);}
+.img-upload-box:hover{border-color:var(--navy);}
 .img-upload-hint{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;color:var(--text3);}
 .img-prev{width:100%;height:90px;object-fit:cover;margin-top:10px;display:none;border-radius:2px;}
 .sw-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px;}
 .sw{width:26px;height:26px;border:2px solid transparent;cursor:pointer;border-radius:2px;transition:transform 0.1s;}
 .sw:hover{transform:scale(1.1);}
 .sw.on{border-color:var(--text);outline:2px solid var(--text);outline-offset:1px;}
+
+/* PASSWORD */
 #pw-gate{display:none;position:fixed;inset:0;z-index:900;background:var(--cream);align-items:center;justify-content:center;}
 .pw-box{text-align:center;padding:48px 32px;max-width:360px;width:100%;}
-.pw-logo{font-family:'Bebas Neue',sans-serif;font-size:60px;color:var(--red);letter-spacing:0.05em;line-height:1;}
-.pw-sub{font-family:'Space Mono',monospace;font-size:10px;color:var(--text3);letter-spacing:0.2em;text-transform:uppercase;margin:8px 0 36px;}
+.pw-vol{font-family:'Space Mono',monospace;font-size:9px;color:var(--text3);letter-spacing:0.25em;text-transform:uppercase;margin-bottom:8px;}
+.pw-logo{font-family:'Bebas Neue',sans-serif;font-size:64px;color:var(--navy);letter-spacing:0.04em;line-height:0.9;}
+.pw-logo em{color:var(--red);font-style:normal;}
+.pw-sub{font-family:'Playfair Display',serif;font-style:italic;font-size:13px;color:var(--text3);margin:10px 0 36px;}
 .pw-input{width:100%;background:var(--white);border:2px solid var(--border2);color:var(--text);font-family:'Space Mono',monospace;font-size:14px;letter-spacing:0.25em;padding:14px 16px;outline:none;text-align:center;margin-bottom:10px;border-radius:2px;transition:border-color 0.12s;}
-.pw-input:focus{border-color:var(--red);}
+.pw-input:focus{border-color:var(--navy);}
 .pw-err{display:none;color:var(--red);font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:10px;}
-.pw-btn{width:100%;background:var(--red);border:none;color:#fff;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;padding:14px;cursor:pointer;border-radius:2px;transition:background 0.12s;}
-.pw-btn:hover{background:var(--red2);}
-#loading-bar{display:none;position:fixed;top:0;left:0;right:0;z-index:800;background:var(--red);padding:8px 24px;align-items:center;gap:10px;}
+.pw-btn{width:100%;background:var(--navy);border:none;color:#fff;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;padding:14px;cursor:pointer;border-radius:2px;transition:background 0.12s;}
+.pw-btn:hover{background:var(--navy2);}
+
+/* LOADING */
+#loading-bar{display:none;position:fixed;top:0;left:0;right:0;z-index:800;background:var(--navy);padding:8px 24px;align-items:center;gap:10px;}
 .spin{width:14px;height:14px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:spin 0.7s linear infinite;flex-shrink:0;}
 @keyframes spin{to{transform:rotate(360deg);}}
 #loading-msg{font-family:'Space Mono',monospace;font-size:11px;color:#fff;letter-spacing:0.15em;text-transform:uppercase;}
+
 .empty{padding:48px;text-align:center;}
 .empty-title{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:0.1em;color:var(--cream3);margin-bottom:8px;}
-.empty-sub{font-size:12px;color:var(--text3);}
-.muted{font-size:12px;color:var(--text3);padding:12px 0;}
-@media(max-width:700px){:root{--w:0px;}nav{display:none;}.topbar,.content{padding:14px 16px;}.home-hero{grid-template-columns:1fr 1fr;}.home-cols{grid-template-columns:1fr;}.cards-grid{grid-template-columns:1fr 1fr;gap:10px;}.form-row{grid-template-columns:1fr;}}
+.empty-sub{font-size:12px;color:var(--text3);font-family:'Playfair Display',serif;font-style:italic;}
+
+@media(max-width:700px){:root{--w:0px;}nav{display:none;}.topbar,.content{padding:14px 16px;}.home-hero{grid-template-columns:1fr 1fr;}.home-cols,.home-cols.reverse{grid-template-columns:1fr;}.cards-grid{grid-template-columns:1fr 1fr;gap:10px;}.form-row{grid-template-columns:1fr;}.album-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr));}}
 </style>
 </head>
 <body>
-<div id="loading-bar"><div class="spin"></div><span id="loading-msg">同步中...</span></div>
+<div id="loading-bar"><div class="spin"></div><span id="loading-msg">載入中...</span></div>
 <div id="pw-gate">
   <div class="pw-box">
-    <div class="pw-logo">FILM<br>LOG</div>
-    <div class="pw-sub">底片日誌 — Private Archive</div>
+    <div class="pw-vol">VOL. 01 — PRIVATE ARCHIVE</div>
+    <div class="pw-logo">FILM<br><em>LOG</em></div>
+    <div class="pw-sub">底片日誌，記錄每一格光影</div>
     <input class="pw-input" id="pw-input" type="password" placeholder="PASSWORD" onkeydown="if(event.key==='Enter')checkPw()">
     <div class="pw-err" id="pw-err">密碼錯誤，請再試一次</div>
     <button class="pw-btn" onclick="checkPw()">ENTER →</button>
   </div>
 </div>
 <nav>
-  <div class="nav-head"><div class="nav-logo">FILM<br>LOG</div><div class="nav-logo-sub">底片日誌</div></div>
+  <div class="nav-head">
+    <div class="nav-vol">VOL. 01</div>
+    <div class="nav-logo">FILM<br><em>LOG</em></div>
+    <div class="nav-logo-sub">底片日誌</div>
+  </div>
   <div class="nav-body">
     <div class="nav-lbl">Overview</div>
-    <div class="nav-item active" onclick="goNav('home')"><div>Home<span class="nav-item-jp">主頁</span></div></div>
+    <div class="nav-item active" onclick="goNav('home')"><span class="nav-dot"></span><div>Home<span class="nav-item-jp">主頁</span></div></div>
     <div class="nav-lbl">Gear</div>
-    <div class="nav-item" onclick="goNav('cameras')"><div>Cameras<span class="nav-item-jp">相機庫</span></div></div>
+    <div class="nav-item" onclick="goNav('cameras')"><span class="nav-dot"></span><div>Cameras<span class="nav-item-jp">相機庫</span></div></div>
     <div class="nav-lbl">Film</div>
-    <div class="nav-item" onclick="goNav('films')"><div>Film Stock<span class="nav-item-jp">底片庫</span></div></div>
-    <div class="nav-item" onclick="goNav('rolls')"><div>Roll Log<span class="nav-item-jp">膠卷記錄</span></div></div>
+    <div class="nav-item" onclick="goNav('films')"><span class="nav-dot"></span><div>Film Stock<span class="nav-item-jp">底片庫</span></div></div>
+    <div class="nav-item" onclick="goNav('rolls')"><span class="nav-dot"></span><div>Roll Log<span class="nav-item-jp">膠卷記錄</span></div></div>
   </div>
   <div class="nav-foot">
     <div class="nav-stat-row"><span>CAM</span><span class="nav-stat-val" id="ns-cam">—</span></div>
@@ -223,8 +314,9 @@ main{margin-left:var(--w);flex:1;min-height:100vh;}
   </div>
 </nav>
 <main>
+  <!-- HOME -->
   <div class="page active" id="page-home">
-    <div class="topbar"><div><div class="topbar-title">Home</div><div class="topbar-sub">主頁 — 底片日誌全覽</div></div></div>
+    <div class="topbar"><div class="topbar-left"><div class="topbar-title">Home</div><div class="topbar-sub">主頁 — 底片日誌全覽</div></div></div>
     <div class="content">
       <div class="home-hero">
         <div class="home-stat"><div class="home-stat-lbl">Total Spent</div><div class="home-stat-val" id="d-total">NT$0</div><div class="home-stat-sub" id="d-sub">—</div></div>
@@ -232,9 +324,9 @@ main{margin-left:var(--w);flex:1;min-height:100vh;}
         <div class="home-stat"><div class="home-stat-lbl">Film Stock</div><div class="home-stat-val" id="d-films">0</div><div class="home-stat-sub" id="d-stock">—</div></div>
         <div class="home-stat"><div class="home-stat-lbl">Rolls Shot</div><div class="home-stat-val" id="d-rolls">0</div><div class="home-stat-sub" id="d-frames">—</div></div>
       </div>
-      <div style="margin-bottom:24px">
+      <div style="margin-bottom:28px">
         <div class="section-head"><span class="section-en">Featured</span><span class="section-jp">精選照片</span></div>
-        <div class="featured-wrap" id="featured-wrap">
+        <div class="featured-wrap">
           <div class="featured-ph" id="featured-ph"><div class="featured-ph-icon">PHOTO</div><div class="featured-ph-lbl">點右上角設定精選照片</div></div>
           <img id="featured-img" class="featured-img" style="display:none" src="">
           <div class="featured-overlay"><div><div class="featured-caption-title" id="featured-title"></div><div class="featured-caption-sub" id="featured-cap"></div></div></div>
@@ -242,56 +334,54 @@ main{margin-left:var(--w);flex:1;min-height:100vh;}
         </div>
       </div>
       <div class="home-cols">
-        <div>
-          <div class="section-head"><span class="section-en">Cameras</span><span class="section-jp">相機預覽</span></div>
-          <div class="cam-strip" id="cam-strip"></div>
-        </div>
-        <div>
-          <div class="section-head"><span class="section-en">Stock Alert</span><span class="section-jp">底片庫存警示</span></div>
-          <div class="warn-list" id="stock-warns"></div>
-        </div>
+        <div><div class="section-head"><span class="section-en">Cameras</span><span class="section-jp">相機預覽</span></div><div class="cam-strip" id="cam-strip"></div></div>
+        <div><div class="section-head"><span class="section-en">Stock Alert</span><span class="section-jp">底片庫存警示</span></div><div class="warn-list" id="stock-warns"></div></div>
       </div>
       <div class="home-cols reverse">
-        <div>
-          <div class="section-head"><span class="section-en">Recent</span><span class="section-jp">最近拍攝</span></div>
-          <div id="d-recent"></div>
-        </div>
-        <div>
-          <div class="section-head"><span class="section-en">Pending</span><span class="section-jp">待沖洗膠卷</span></div>
-          <div class="pending-list" id="pending-list"></div>
-        </div>
+        <div><div class="section-head"><span class="section-en">Recent</span><span class="section-jp">最近拍攝</span></div><div id="d-recent"></div></div>
+        <div><div class="section-head"><span class="section-en">Pending</span><span class="section-jp">待沖洗膠卷</span></div><div class="pending-list" id="pending-list"></div></div>
       </div>
     </div>
   </div>
+  <!-- CAMERAS -->
   <div class="page" id="page-cameras">
-    <div class="topbar"><div><div class="topbar-title">Cameras</div><div class="topbar-sub">相機庫 — 點圖片更換照片</div></div><button class="btn-add" onclick="openOv('camera',-1)">＋ ADD</button></div>
-    <div class="content">
-      <div class="section-head"><span class="section-en">My Collection</span><span class="section-jp">コレクション</span><span class="section-count" id="cam-count">0 台</span></div>
-      <div class="cards-grid" id="cameras-grid"></div>
-    </div>
+    <div class="topbar"><div class="topbar-left"><div class="topbar-title">Cameras</div><div class="topbar-sub">相機庫 — 點圖片更換照片</div></div><button class="btn-add" onclick="openOv('camera',-1)">＋ ADD</button></div>
+    <div class="content"><div class="section-head"><span class="section-en">My Collection</span><span class="section-jp">コレクション</span><span class="section-count" id="cam-count">0 台</span></div><div class="cards-grid" id="cameras-grid"></div></div>
   </div>
+  <!-- FILMS -->
   <div class="page" id="page-films">
-    <div class="topbar"><div><div class="topbar-title">Film Stock</div><div class="topbar-sub">底片庫 — 點圖片更換照片</div></div><button class="btn-add" onclick="openOv('film',-1)">＋ ADD</button></div>
-    <div class="content">
-      <div class="section-head"><span class="section-en">My Films</span><span class="section-jp">フィルムストック</span><span class="section-count" id="film-count">0 種</span></div>
-      <div class="cards-grid" id="films-grid"></div>
+    <div class="topbar"><div class="topbar-left"><div class="topbar-title">Film Stock</div><div class="topbar-sub">底片庫 — 點圖片更換照片</div></div><button class="btn-add" onclick="openOv('film',-1)">＋ ADD</button></div>
+    <div class="content"><div class="section-head"><span class="section-en">My Films</span><span class="section-jp">フィルムストック</span><span class="section-count" id="film-count">0 種</span></div><div class="cards-grid" id="films-grid"></div></div>
+  </div>
+  <!-- ROLLS -->
+  <div class="page" id="page-rolls">
+    <div class="topbar"><div class="topbar-left"><div class="topbar-title">Roll Log</div><div class="topbar-sub">膠卷記錄 — 每一卷的拍攝紀錄</div></div><button class="btn-add" onclick="openOv('roll',-1)">＋ ADD</button></div>
+    <div class="content"><div class="section-head"><span class="section-en">All Rolls</span><span class="section-jp">全記錄</span><span class="section-count" id="roll-count">0 卷</span></div>
+      <div class="roll-wrap"><table class="roll-table"><thead><tr><th style="width:44px">No.</th><th>Film</th><th>Camera</th><th>Date</th><th>Fr.</th><th>Status</th><th style="width:120px"></th></tr></thead><tbody id="rolls-body"></tbody></table></div>
     </div>
   </div>
-  <div class="page" id="page-rolls">
-    <div class="topbar"><div><div class="topbar-title">Roll Log</div><div class="topbar-sub">膠卷記錄 — 每一卷的拍攝紀錄</div></div><button class="btn-add" onclick="openOv('roll',-1)">＋ ADD</button></div>
+  <!-- ALBUM -->
+  <div class="page" id="page-album">
+    <div class="topbar"><div class="topbar-left"><div class="topbar-title" id="album-topbar-title">Album</div><div class="topbar-sub" id="album-topbar-sub">相簿</div></div></div>
     <div class="content">
-      <div class="section-head"><span class="section-en">All Rolls</span><span class="section-jp">全記錄</span><span class="section-count" id="roll-count">0 卷</span></div>
-      <div class="roll-wrap"><table class="roll-table"><thead><tr><th style="width:44px">No.</th><th>Film</th><th>Camera</th><th>Date</th><th>Fr.</th><th>Status</th><th style="width:96px"></th></tr></thead><tbody id="rolls-body"></tbody></table></div>
+      <button class="album-back" onclick="goNav('rolls')">← Back to Roll Log</button>
+      <div class="album-info">
+        <div><div class="album-roll-name" id="album-roll-name">—</div><div class="album-roll-meta" id="album-roll-meta">—</div></div>
+        <button class="album-add-btn" onclick="addAlbumPhoto()">＋ ADD PHOTO</button>
+      </div>
+      <div class="album-grid" id="album-grid"></div>
     </div>
   </div>
 </main>
+
+<!-- OVERLAYS -->
 <div class="overlay" id="overlay-camera">
   <div class="ov-box">
     <div class="ov-head"><div class="ov-title" id="cam-ov-title">New Camera</div><button class="ov-close" onclick="closeOv()">✕</button></div>
     <div class="ov-body">
       <div class="form-row"><div class="form-g"><label class="form-l">Brand</label><input class="form-i" id="c-brand" placeholder="Nikon, Contax..."></div><div class="form-g"><label class="form-l">Model</label><input class="form-i" id="c-model" placeholder="FM2, G2..."></div></div>
       <div class="form-row"><div class="form-g"><label class="form-l">Type</label><select class="form-s" id="c-type"><option>SLR 單眼</option><option>RF 旁軸</option><option>TLR 雙眼</option><option>Point &amp; Shoot</option><option>中片幅 SLR</option><option>大片幅</option><option>即可拍</option></select></div><div class="form-g"><label class="form-l">Format</label><select class="form-s" id="c-format"><option>35mm</option><option>120</option><option>即可拍</option><option>4x5</option></select></div></div>
-      <div class="form-g"><label class="form-l">Lens</label><input class="form-i" id="c-lens" placeholder="50mm f/1.4"></div>
+      <div class="form-g"><label class="form-l">Lens</label><input class="form-i" id="c-lens" placeholder="主鏡頭（可在卡片展開新增多顆）"></div>
       <div class="form-row"><div class="form-g"><label class="form-l">Status</label><select class="form-s" id="c-status"><option value="active">使用中</option><option value="shelf">收藏中</option></select></div><div class="form-g"><label class="form-l">Price (NT$)</label><input class="form-i" id="c-price" type="number" placeholder="0"></div></div>
       <div class="form-g"><label class="form-l">Note</label><textarea class="form-ta" id="c-note" placeholder="購入年份、特色、心得..."></textarea></div>
       <div class="form-g"><label class="form-l">Photo</label><div class="img-upload-box" onclick="document.getElementById('c-img-input').click()"><div class="img-upload-hint">Click to Upload / 點擊上傳</div><input type="file" id="c-img-input" accept="image/*" style="display:none" onchange="prevImg(this,'c-img-prev')"><img id="c-img-prev" class="img-prev"></div></div>
@@ -307,7 +397,7 @@ main{margin-left:var(--w);flex:1;min-height:100vh;}
       <div class="form-row"><div class="form-g"><label class="form-l">ISO</label><input class="form-i" id="f-iso" type="number" placeholder="400"></div><div class="form-g"><label class="form-l">Type</label><select class="form-s" id="f-type"><option value="color">彩色負片</option><option value="bw">黑白</option><option value="slide">正片</option><option value="instant">即可拍</option></select></div></div>
       <div class="form-row"><div class="form-g"><label class="form-l">Stock</label><input class="form-i" id="f-stock" type="number" placeholder="0"></div><div class="form-g"><label class="form-l">Price/Roll (NT$)</label><input class="form-i" id="f-price" type="number" placeholder="0"></div></div>
       <div class="form-g"><label class="form-l">Photo</label><div class="img-upload-box" onclick="document.getElementById('f-img-input').click()"><div class="img-upload-hint">Click to Upload / 點擊上傳包裝圖</div><input type="file" id="f-img-input" accept="image/*" style="display:none" onchange="prevImg(this,'f-img-prev')"><img id="f-img-prev" class="img-prev"></div></div>
-      <div class="form-g"><label class="form-l">Card Color（無圖時顯示）</label><div class="sw-row"><div class="sw on" style="background:#d42b14" data-c="#d42b14" onclick="pickSw(this)"></div><div class="sw" style="background:#c07820" data-c="#c07820" onclick="pickSw(this)"></div><div class="sw" style="background:#2060a0" data-c="#2060a0" onclick="pickSw(this)"></div><div class="sw" style="background:#207840" data-c="#207840" onclick="pickSw(this)"></div><div class="sw" style="background:#703080" data-c="#703080" onclick="pickSw(this)"></div><div class="sw" style="background:#806050" data-c="#806050" onclick="pickSw(this)"></div><div class="sw" style="background:#505050" data-c="#505050" onclick="pickSw(this)"></div></div></div>
+      <div class="form-g"><label class="form-l">Card Color（無圖時顯示）</label><div class="sw-row"><div class="sw on" style="background:#d42b14" data-c="#d42b14" onclick="pickSw(this)"></div><div class="sw" style="background:#1a2a4a" data-c="#1a2a4a" onclick="pickSw(this)"></div><div class="sw" style="background:#c07820" data-c="#c07820" onclick="pickSw(this)"></div><div class="sw" style="background:#207840" data-c="#207840" onclick="pickSw(this)"></div><div class="sw" style="background:#703080" data-c="#703080" onclick="pickSw(this)"></div><div class="sw" style="background:#806050" data-c="#806050" onclick="pickSw(this)"></div><div class="sw" style="background:#505050" data-c="#505050" onclick="pickSw(this)"></div></div></div>
       <div class="form-actions"><button class="btn-cancel" onclick="closeOv()">Cancel</button><button class="btn-save" onclick="saveFilm()">Save →</button></div>
     </div>
   </div>
@@ -335,25 +425,99 @@ main{margin-left:var(--w);flex:1;min-height:100vh;}
     </div>
   </div>
 </div>
+
+<!-- LIGHTBOX -->
+<div id="lightbox">
+  <button class="lb-close" onclick="closeLb()">✕</button>
+  <button class="lb-prev" onclick="lbNav(-1)">‹</button>
+  <img id="lb-img" src="">
+  <button class="lb-next" onclick="lbNav(1)">›</button>
+</div>
+
 <script>
 const API='https://script.google.com/macros/s/AKfycbyPpEOVQObvG3Mm68zEKqC9M99sQ6uIHNL_qPo8uRy2StPm0dF-_01Sg3GJpWxcwQ2N/exec';
 const PASSWORD='film2025';
 const LS_FEAT='filmlog-featured';
+const LS_CACHE='filmlog-cache-v1';
+const LS_ALBUMS='filmlog-albums-v1';
+
 let unlocked=sessionStorage.getItem('unlocked')==='1';
 let data={cameras:[],films:[],rolls:[]};
 let featured=JSON.parse(localStorage.getItem(LS_FEAT)||'{}');
+let albums=JSON.parse(localStorage.getItem(LS_ALBUMS)||'{}');
 let editIdx={camera:-1,film:-1,roll:-1};
 let pickedColor='#d42b14';
+let currentAlbumIdx=-1;
+let lbPhotos=[],lbIdx=0;
 
-function checkPw(){const inp=document.getElementById('pw-input');if(inp.value===PASSWORD){unlocked=true;sessionStorage.setItem('unlocked','1');document.getElementById('pw-gate').style.display='none';initApp();}else{document.getElementById('pw-err').style.display='block';inp.value='';inp.focus();}}
-document.addEventListener('DOMContentLoaded',()=>{if(unlocked){document.getElementById('pw-gate').style.display='none';initApp();}else{document.getElementById('pw-gate').style.display='flex';setTimeout(()=>document.getElementById('pw-input').focus(),100);}});
+// AUTH
+function checkPw(){
+  const inp=document.getElementById('pw-input');
+  if(inp.value===PASSWORD){unlocked=true;sessionStorage.setItem('unlocked','1');document.getElementById('pw-gate').style.display='none';initApp();}
+  else{document.getElementById('pw-err').style.display='block';inp.value='';inp.focus();}
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  if(unlocked){document.getElementById('pw-gate').style.display='none';initApp();}
+  else{document.getElementById('pw-gate').style.display='flex';setTimeout(()=>document.getElementById('pw-input').focus(),100);}
+});
+
+// LOADING
 function showLoad(m){document.getElementById('loading-msg').textContent=m||'同步中...';document.getElementById('loading-bar').style.display='flex';}
 function hideLoad(){document.getElementById('loading-bar').style.display='none';}
-async function fetchAll(){showLoad('載入資料中...');try{const[c,f,r]=await Promise.all([fetch(API+'?action=get&type=cameras').then(x=>x.json()),fetch(API+'?action=get&type=films').then(x=>x.json()),fetch(API+'?action=get&type=rolls').then(x=>x.json())]);data.cameras=Array.isArray(c)?c:[];data.films=Array.isArray(f)?f:[];data.rolls=Array.isArray(r)?r:[];render();}catch(e){alert('無法連接 Google Sheets，請檢查網路');}hideLoad();}
-async function syncType(type){showLoad('儲存中...');try{const p=encodeURIComponent(JSON.stringify(data[type]));await fetch(API+'?action=save&type='+type+'&data='+p);}catch(e){alert('儲存失敗，請稍後再試');}hideLoad();}
-async function initApp(){try{await Promise.all(['cameras','films','rolls'].map(t=>fetch(API,{method:'POST',body:JSON.stringify({action:'init',type:t})})));}catch(e){}fetchAll();}
-function goNav(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));document.getElementById('page-'+id).classList.add('active');const map={home:0,cameras:1,films:2,rolls:3};document.querySelectorAll('.nav-item')[map[id]].classList.add('active');render();}
+
+// CACHE-FIRST FETCH
+async function initApp(){
+  // Load cache immediately
+  const cached=localStorage.getItem(LS_CACHE);
+  if(cached){
+    try{const c=JSON.parse(cached);data.cameras=c.cameras||[];data.films=c.films||[];data.rolls=c.rolls||[];render();}catch(e){}
+  }
+  // Init sheets
+  try{await Promise.all(['cameras','films','rolls'].map(t=>fetch(API,{method:'POST',body:JSON.stringify({action:'init',type:t})})));}catch(e){}
+  // Background fetch
+  fetchAll(true);
+}
+
+async function fetchAll(silent){
+  if(!silent)showLoad('載入資料中...');
+  try{
+    const[c,f,r]=await Promise.all([
+      fetch(API+'?action=get&type=cameras').then(x=>x.json()),
+      fetch(API+'?action=get&type=films').then(x=>x.json()),
+      fetch(API+'?action=get&type=rolls').then(x=>x.json()),
+    ]);
+    data.cameras=Array.isArray(c)?c:[];
+    data.films=Array.isArray(f)?f:[];
+    data.rolls=Array.isArray(r)?r:[];
+    localStorage.setItem(LS_CACHE,JSON.stringify(data));
+    render();
+  }catch(e){if(!silent)alert('無法連接 Google Sheets，請檢查網路');}
+  if(!silent)hideLoad();
+}
+
+async function syncType(type){
+  showLoad('儲存中...');
+  try{
+    const p=encodeURIComponent(JSON.stringify(data[type]));
+    await fetch(API+'?action=save&type='+type+'&data='+p);
+    localStorage.setItem(LS_CACHE,JSON.stringify(data));
+  }catch(e){alert('儲存失敗，請稍後再試');}
+  hideLoad();
+}
+
+// NAV
+function goNav(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  const map={home:0,cameras:1,films:2,rolls:3};
+  if(map[id]!==undefined)document.querySelectorAll('.nav-item')[map[id]].classList.add('active');
+  if(id!=='album')render();
+}
+
+// RENDER
 function render(){rHome();rCams();rFilms();rRolls();rNav();}
+
 function rHome(){
   const cc=data.cameras.reduce((s,c)=>s+(+c.price||0),0);
   const fc=data.films.reduce((s,f)=>s+(+f.price||0)*(+f.stock||0),0);
@@ -388,30 +552,254 @@ function rHome(){
     ?'<div class="roll-wrap"><table class="roll-table"><thead><tr><th>Film</th><th>Camera</th><th>Status</th></tr></thead><tbody>'+recent.map(r=>{const[l,c]=dm[r.dev]||['—','dev-pending'];return'<tr><td><div class="roll-film-name">'+r.film+'</div>'+(r.date?'<div class="roll-film-note">'+r.date+'</div>':'')+'</td><td style="color:var(--text2);font-size:12px">'+r.camera+'</td><td><span class="dev-tag '+c+'">'+l+'</span></td></tr>';}).join('')+'</tbody></table></div>'
     :'<div class="muted">尚無膠卷記錄</div>';
 }
-function rCams(){document.getElementById('cam-count').textContent=data.cameras.length+' 台';const g=document.getElementById('cameras-grid');if(!data.cameras.length){g.innerHTML='<div class="empty"><div class="empty-title">NO CAMERAS YET</div><div class="empty-sub">點右上角新增你的第一台相機</div></div>';return;}g.innerHTML=data.cameras.map((c,i)=>`<div class="camera-card"><div class="cam-img" onclick="upImg('cameras',${i})">${c.img?`<img src="${c.img}">`:`<div class="cam-img-ph"><div class="cam-img-ph-icon">PHOTO</div><div class="cam-img-ph-lbl">${c.brand||''}</div></div>`}<div class="img-hover">Change Photo</div></div><div class="cam-body"><div class="cam-type-row"><span class="cam-type">${c.type||''} · ${c.format||''}</span><span class="status-pill ${c.status==='active'?'status-active':'status-shelf'}">${c.status==='active'?'IN USE':'SHELF'}</span></div><div class="cam-name">${c.brand||''} ${c.model||''}</div><div class="cam-spec">${[c.lens,c.note].filter(Boolean).join(' · ')}</div>${c.price?`<div class="cam-price">NT$ ${parseInt(c.price).toLocaleString()}</div>`:''}<div class="card-actions"><button class="btn-edit" onclick="openOv('camera',${i})">EDIT</button><button class="btn-del-card" onclick="delIt('cameras',${i})">✕</button></div></div></div>`).join('');}
-function rFilms(){document.getElementById('film-count').textContent=data.films.length+' 種';const g=document.getElementById('films-grid');const tM={color:['彩色','tag-color'],bw:['黑白','tag-bw'],slide:['正片','tag-slide'],instant:['即可拍','tag-instant']};if(!data.films.length){g.innerHTML='<div class="empty"><div class="empty-title">NO FILM STOCK YET</div><div class="empty-sub">點右上角新增底片</div></div>';return;}g.innerHTML=data.films.map((f,i)=>{const[tl,tc]=tM[f.type]||['彩色','tag-color'];return`<div class="film-card"><div class="film-img" onclick="upImg('films',${i})">${f.img?`<img src="${f.img}"><div class="img-hover">Change Photo</div>`:`<div class="film-color-ph" style="background:${f.color||'#d42b14'}"><div class="film-color-name">${f.name||''}</div><div class="film-color-brand">${f.brand||''}</div></div><div class="img-hover">Add Photo</div>`}</div><div class="film-body"><div class="film-color-bar" style="background:${f.color||'#d42b14'}"></div><div class="film-tags"><span class="film-tag ${tc}">${tl}</span><span class="film-iso">ISO ${f.iso||'—'}</span></div><div class="film-name">${f.name||''}</div><div class="film-brand">${f.brand||''}</div><div class="film-foot"><span class="film-stock ${+f.stock>0?'stock-ok':'stock-zero'}">${+f.stock>0?'剩 '+f.stock+' 卷':'SOLD OUT'}</span>${f.price?`<span class="film-price-sm">NT$${parseInt(f.price)}/卷</span>`:''}</div><div class="card-actions"><button class="btn-edit" onclick="openOv('film',${i})">EDIT</button><button class="btn-del-card" onclick="delIt('films',${i})">✕</button></div></div></div>`;}).join('');}
-function rRolls(){document.getElementById('roll-count').textContent=data.rolls.length+' 卷';const dm={pending:['尚未沖洗','dev-pending'],done:['已沖洗','dev-done'],scan:['已掃描','dev-scan']};document.getElementById('rolls-body').innerHTML=data.rolls.length?data.rolls.map((r,i)=>{const[l,c]=dm[r.dev]||['—','dev-pending'];return`<tr><td class="roll-no">${String(i+1).padStart(2,'0')}</td><td><div class="roll-film-name">${r.film}</div>${r.note?`<div class="roll-film-note">${r.note}</div>`:''}</td><td style="color:var(--text2)">${r.camera}</td><td style="color:var(--text3);white-space:nowrap;font-size:12px">${r.date||'—'}</td><td style="color:var(--text2)">${r.frames||36}</td><td><span class="dev-tag ${c}">${l}</span></td><td><button class="btn-row-edit" onclick="openOv('roll',${i})">EDIT</button><button class="btn-row-del" onclick="delIt('rolls',${i})">✕</button></td></tr>`;}).join(''):'<tr><td colspan="7" style="padding:32px;text-align:center;color:var(--text3);font-size:12px;letter-spacing:0.1em">NO ROLLS YET</td></tr>';}
-function rNav(){document.getElementById('ns-cam').textContent=data.cameras.length+' 台';document.getElementById('ns-film').textContent=data.films.length+' 種';document.getElementById('ns-roll').textContent=data.rolls.length+' 卷';}
+
+function lensesOf(c){try{return Array.isArray(c.lenses)?c.lenses:(c.lenses?JSON.parse(c.lenses):[]);}catch(e){return[];}}
+
+function rCams(){
+  document.getElementById('cam-count').textContent=data.cameras.length+' 台';
+  const g=document.getElementById('cameras-grid');
+  if(!data.cameras.length){g.innerHTML='<div class="empty"><div class="empty-title">NO CAMERAS YET</div><div class="empty-sub">點右上角新增你的第一台相機</div></div>';return;}
+  g.innerHTML=data.cameras.map((c,i)=>{
+    const lenses=lensesOf(c);
+    return`<div class="camera-card">
+      <div class="cam-img" onclick="upImg('cameras',${i})">${c.img?`<img src="${c.img}">`:`<div class="cam-img-ph"><div class="cam-img-ph-icon">PHOTO</div><div class="cam-img-ph-lbl">${c.brand||''}</div></div>`}<div class="img-hover">Change Photo</div></div>
+      <div class="cam-body">
+        <div class="cam-type-row"><span class="cam-type">${c.type||''} · ${c.format||''}</span><span class="status-pill ${c.status==='active'?'status-active':'status-shelf'}">${c.status==='active'?'IN USE':'SHELF'}</span></div>
+        <div class="cam-name">${c.brand||''} ${c.model||''}</div>
+        ${c.note?`<span class="cam-italic">${c.note}</span>`:''}
+        <div class="cam-spec">${c.lens||''}</div>
+        ${c.price?`<div class="cam-price">NT$ ${parseInt(c.price).toLocaleString()}</div>`:''}
+        <div class="card-actions"><button class="btn-edit" onclick="openOv('camera',${i})">EDIT</button><button class="btn-del-card" onclick="delIt('cameras',${i})">✕</button></div>
+        <button class="lens-toggle" id="lens-toggle-${i}" onclick="toggleLens(${i})">${lenses.length?`鏡頭 ${lenses.length} 顆`:'鏡頭'}<span id="lens-arrow-${i}">▾</span></button>
+        <div class="lens-section" id="lens-section-${i}">
+          <div class="lens-list" id="lens-list-${i}">${lenses.length?lenses.map((l,j)=>`<div class="lens-item"><div><div class="lens-focal">${l.focal||'—'}</div><div class="lens-name">${l.name||''}</div></div><div class="lens-aperture">${l.aperture||''}</div><button class="lens-del" onclick="delLens(${i},${j})">✕</button></div>`).join(''):'<div class="lens-empty">尚無鏡頭，在下方新增</div>'}</div>
+          <div class="lens-add-row"><input class="lens-input" id="li-focal-${i}" placeholder="焦段 e.g. 21mm"><input class="lens-input" id="li-ap-${i}" placeholder="光圈 e.g. f/2.8"><input class="lens-input" id="li-name-${i}" placeholder="型號 e.g. Biogon"><button class="lens-add-btn" onclick="addLens(${i})">＋</button></div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function rFilms(){
+  document.getElementById('film-count').textContent=data.films.length+' 種';
+  const g=document.getElementById('films-grid');
+  const tM={color:['彩色','tag-color'],bw:['黑白','tag-bw'],slide:['正片','tag-slide'],instant:['即可拍','tag-instant']};
+  if(!data.films.length){g.innerHTML='<div class="empty"><div class="empty-title">NO FILM STOCK YET</div><div class="empty-sub">點右上角新增底片</div></div>';return;}
+  g.innerHTML=data.films.map((f,i)=>{
+    const[tl,tc]=tM[f.type]||['彩色','tag-color'];
+    return`<div class="film-card">
+      <div class="film-img" onclick="upImg('films',${i})">${f.img?`<img src="${f.img}"><div class="img-hover">Change Photo</div>`:`<div class="film-color-ph" style="background:${f.color||'#d42b14'}"><div class="film-color-name">${f.name||''}</div><div class="film-color-brand">${f.brand||''}</div></div><div class="img-hover">Add Photo</div>`}</div>
+      <div class="film-body">
+        <div class="film-color-bar" style="background:${f.color||'#d42b14'}"></div>
+        <div class="film-tags"><span class="film-tag ${tc}">${tl}</span><span class="film-iso">ISO ${f.iso||'—'}</span></div>
+        <div class="film-name">${f.name||''}</div>
+        <div class="film-brand">${f.brand||''}</div>
+        <div class="film-foot"><span class="film-stock ${+f.stock>0?'stock-ok':'stock-zero'}">${+f.stock>0?'剩 '+f.stock+' 卷':'SOLD OUT'}</span>${f.price?`<span class="film-price-sm">NT$${parseInt(f.price)}/卷</span>`:''}</div>
+        <div class="card-actions"><button class="btn-edit" onclick="openOv('film',${i})">EDIT</button><button class="btn-del-card" onclick="delIt('films',${i})">✕</button></div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function rRolls(){
+  document.getElementById('roll-count').textContent=data.rolls.length+' 卷';
+  const dm={pending:['尚未沖洗','dev-pending'],done:['已沖洗','dev-done'],scan:['已掃描','dev-scan']};
+  document.getElementById('rolls-body').innerHTML=data.rolls.length
+    ?data.rolls.map((r,i)=>{
+      const[l,c]=dm[r.dev]||['—','dev-pending'];
+      const photoCount=(albums[i]||[]).length;
+      return`<tr>
+        <td class="roll-no">${String(i+1).padStart(2,'0')}</td>
+        <td><div class="roll-film-name">${r.film}</div>${r.note?`<div class="roll-film-note">${r.note}</div>`:''}</td>
+        <td style="color:var(--text2)">${r.camera}</td>
+        <td style="color:var(--text3);white-space:nowrap;font-size:12px">${r.date||'—'}</td>
+        <td style="color:var(--text2)">${r.frames||36}</td>
+        <td><span class="dev-tag ${c}">${l}</span></td>
+        <td>
+          <button class="btn-row-album" onclick="openAlbum(${i})">📷${photoCount?` ${photoCount}`:''}</button>
+          <button class="btn-row-edit" onclick="openOv('roll',${i})">EDIT</button>
+          <button class="btn-row-del" onclick="delIt('rolls',${i})">✕</button>
+        </td>
+      </tr>`;
+    }).join('')
+    :'<tr><td colspan="7" style="padding:32px;text-align:center;color:var(--text3);font-size:12px;letter-spacing:0.1em">NO ROLLS YET</td></tr>';
+}
+
+function rNav(){
+  document.getElementById('ns-cam').textContent=data.cameras.length+' 台';
+  document.getElementById('ns-film').textContent=data.films.length+' 種';
+  document.getElementById('ns-roll').textContent=data.rolls.length+' 卷';
+}
+
+// ALBUM
+function openAlbum(idx){
+  currentAlbumIdx=idx;
+  const r=data.rolls[idx];
+  document.getElementById('album-topbar-title').textContent=r.film||'Album';
+  document.getElementById('album-topbar-sub').textContent=r.camera+(r.date?' · '+r.date:'');
+  document.getElementById('album-roll-name').textContent=r.film||'—';
+  document.getElementById('album-roll-meta').textContent=[r.camera,r.date,r.frames?r.frames+' frames':''].filter(Boolean).join(' · ').toUpperCase();
+  rAlbum();
+  goNav('album');
+}
+
+function rAlbum(){
+  const photos=albums[currentAlbumIdx]||[];
+  const g=document.getElementById('album-grid');
+  if(!photos.length){
+    g.innerHTML='<div class="album-empty" style="grid-column:1/-1"><div class="album-empty-icon">◎</div><div class="album-empty-sub">這卷還沒有照片，點上方按鈕新增</div></div>';
+    return;
+  }
+  g.innerHTML=photos.map((p,j)=>`
+    <div class="album-photo">
+      <img src="${p}" onclick="openLb(${j})" loading="lazy">
+      <button class="album-photo-del" onclick="delAlbumPhoto(${j})">✕</button>
+    </div>`).join('');
+}
+
+function addAlbumPhoto(){
+  const inp=document.createElement('input');
+  inp.type='file';inp.accept='image/*';inp.multiple=true;
+  inp.onchange=e=>{
+    const files=Array.from(e.target.files);
+    if(!files.length)return;
+    let loaded=0;
+    files.forEach(file=>{
+      const reader=new FileReader();
+      reader.onload=ev=>{
+        if(!albums[currentAlbumIdx])albums[currentAlbumIdx]=[];
+        albums[currentAlbumIdx].push(ev.target.result);
+        loaded++;
+        if(loaded===files.length){
+          localStorage.setItem(LS_ALBUMS,JSON.stringify(albums));
+          rAlbum();
+          rRolls();
+        }
+      };
+      reader.readAsDataURL(file);
+    });
+  };
+  inp.click();
+}
+
+function delAlbumPhoto(j){
+  if(!confirm('刪除這張照片？'))return;
+  albums[currentAlbumIdx].splice(j,1);
+  localStorage.setItem(LS_ALBUMS,JSON.stringify(albums));
+  rAlbum();rRolls();
+}
+
+// LIGHTBOX
+function openLb(idx){
+  lbPhotos=albums[currentAlbumIdx]||[];
+  lbIdx=idx;
+  document.getElementById('lb-img').src=lbPhotos[lbIdx];
+  document.getElementById('lightbox').classList.add('show');
+}
+function closeLb(){document.getElementById('lightbox').classList.remove('show');}
+function lbNav(dir){lbIdx=(lbIdx+dir+lbPhotos.length)%lbPhotos.length;document.getElementById('lb-img').src=lbPhotos[lbIdx];}
+document.getElementById('lightbox').addEventListener('click',e=>{if(e.target===document.getElementById('lightbox'))closeLb();});
+document.addEventListener('keydown',e=>{if(document.getElementById('lightbox').classList.contains('show')){if(e.key==='Escape')closeLb();if(e.key==='ArrowLeft')lbNav(-1);if(e.key==='ArrowRight')lbNav(1);}});
+
+// LENS
+function toggleLens(i){
+  const sec=document.getElementById('lens-section-'+i);
+  const tog=document.getElementById('lens-toggle-'+i);
+  const arr=document.getElementById('lens-arrow-'+i);
+  const open=sec.classList.toggle('open');
+  tog.classList.toggle('open',open);
+  arr.textContent=open?'▴':'▾';
+}
+function addLens(i){
+  const focal=document.getElementById('li-focal-'+i).value.trim();
+  const aperture=document.getElementById('li-ap-'+i).value.trim();
+  const name=document.getElementById('li-name-'+i).value.trim();
+  if(!focal&&!name)return;
+  const lenses=lensesOf(data.cameras[i]);
+  lenses.push({focal,aperture,name});
+  data.cameras[i].lenses=lenses;
+  syncType('cameras');rCams();
+  setTimeout(()=>{const s=document.getElementById('lens-section-'+i);const t=document.getElementById('lens-toggle-'+i);const a=document.getElementById('lens-arrow-'+i);if(s){s.classList.add('open');t.classList.add('open');a.textContent='▴';}},100);
+}
+function delLens(i,j){
+  if(!confirm('刪除這顆鏡頭？'))return;
+  const lenses=lensesOf(data.cameras[i]);
+  lenses.splice(j,1);data.cameras[i].lenses=lenses;
+  syncType('cameras');rCams();
+  setTimeout(()=>{const s=document.getElementById('lens-section-'+i);const t=document.getElementById('lens-toggle-'+i);const a=document.getElementById('lens-arrow-'+i);if(s){s.classList.add('open');t.classList.add('open');a.textContent='▴';}},100);
+}
+
+// CRUD
 function delIt(type,idx){if(!confirm('確定刪除這筆記錄？'))return;data[type].splice(idx,1);syncType(type);render();}
-function upImg(type,idx){const inp=document.createElement('input');inp.type='file';inp.accept='image/*';inp.onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{data[type][idx].img=ev.target.result;syncType(type);render();};r.readAsDataURL(f);};inp.click();}
+
+function upImg(type,idx){
+  const inp=document.createElement('input');inp.type='file';inp.accept='image/*';
+  inp.onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{data[type][idx].img=ev.target.result;syncType(type);render();};r.readAsDataURL(f);};
+  inp.click();
+}
 function prevImg(inp,pid){const f=inp.files[0];if(!f)return;const r=new FileReader();r.onload=e=>{const im=document.getElementById(pid);im.src=e.target.result;im.style.display='block';};r.readAsDataURL(f);}
 function getImg(pid,fb){const el=document.getElementById(pid);return(el&&el.style.display!=='none'&&el.src&&el.src.startsWith('data:'))?el.src:(fb||'');}
 function pickSw(el){document.querySelectorAll('.sw').forEach(s=>s.classList.remove('on'));el.classList.add('on');pickedColor=el.dataset.c;}
 function setSelectVal(id,val){const sel=document.getElementById(id);if(!sel||!val)return;for(let i=0;i<sel.options.length;i++){if(sel.options[i].value===val||sel.options[i].text===val){sel.selectedIndex=i;break;}}}
+
 function openOv(type,idx){
   editIdx[type]=idx;const isEdit=idx>=0;
-  if(type==='camera'){document.getElementById('cam-ov-title').textContent=isEdit?'Edit Camera':'New Camera';const c=isEdit?data.cameras[idx]:{};document.getElementById('c-brand').value=c.brand||'';document.getElementById('c-model').value=c.model||'';document.getElementById('c-lens').value=c.lens||'';document.getElementById('c-price').value=c.price||'';document.getElementById('c-note').value=c.note||'';setSelectVal('c-type',c.type);setSelectVal('c-format',c.format);setSelectVal('c-status',c.status||'active');const p=document.getElementById('c-img-prev');if(c.img){p.src=c.img;p.style.display='block';}else{p.src='';p.style.display='none';}}
-  if(type==='film'){document.getElementById('film-ov-title').textContent=isEdit?'Edit Film':'New Film Stock';const f=isEdit?data.films[idx]:{};document.getElementById('f-brand').value=f.brand||'';document.getElementById('f-name').value=f.name||'';document.getElementById('f-iso').value=f.iso||'';document.getElementById('f-stock').value=f.stock||'';document.getElementById('f-price').value=f.price||'';setSelectVal('f-type',f.type);pickedColor=f.color||'#d42b14';document.querySelectorAll('.sw').forEach(s=>s.classList.toggle('on',s.dataset.c===pickedColor));const p=document.getElementById('f-img-prev');if(f.img){p.src=f.img;p.style.display='block';}else{p.src='';p.style.display='none';}}
-  if(type==='roll'){document.getElementById('roll-ov-title').textContent=isEdit?'Edit Roll':'New Roll';const r=isEdit?data.rolls[idx]:{};document.getElementById('r-film').value=r.film||'';document.getElementById('r-cam').value=r.camera||'';document.getElementById('r-date').value=r.date||'';document.getElementById('r-frames').value=r.frames||'';document.getElementById('r-note').value=r.note||'';setSelectVal('r-dev',r.dev||'pending');}
-  if(type==='featured'){document.getElementById('feat-title').value=featured.title||'';document.getElementById('feat-cap-input').value=featured.caption||'';const p=document.getElementById('feat-img-prev');if(featured.img){p.src=featured.img;p.style.display='block';}else{p.src='';p.style.display='none';}}
+  if(type==='camera'){
+    document.getElementById('cam-ov-title').textContent=isEdit?'Edit Camera':'New Camera';
+    const c=isEdit?data.cameras[idx]:{};
+    document.getElementById('c-brand').value=c.brand||'';document.getElementById('c-model').value=c.model||'';
+    document.getElementById('c-lens').value=c.lens||'';document.getElementById('c-price').value=c.price||'';document.getElementById('c-note').value=c.note||'';
+    setSelectVal('c-type',c.type);setSelectVal('c-format',c.format);setSelectVal('c-status',c.status||'active');
+    const p=document.getElementById('c-img-prev');if(c.img){p.src=c.img;p.style.display='block';}else{p.src='';p.style.display='none';}
+  }
+  if(type==='film'){
+    document.getElementById('film-ov-title').textContent=isEdit?'Edit Film':'New Film Stock';
+    const f=isEdit?data.films[idx]:{};
+    document.getElementById('f-brand').value=f.brand||'';document.getElementById('f-name').value=f.name||'';
+    document.getElementById('f-iso').value=f.iso||'';document.getElementById('f-stock').value=f.stock||'';document.getElementById('f-price').value=f.price||'';
+    setSelectVal('f-type',f.type);pickedColor=f.color||'#d42b14';
+    document.querySelectorAll('.sw').forEach(s=>s.classList.toggle('on',s.dataset.c===pickedColor));
+    const p=document.getElementById('f-img-prev');if(f.img){p.src=f.img;p.style.display='block';}else{p.src='';p.style.display='none';}
+  }
+  if(type==='roll'){
+    document.getElementById('roll-ov-title').textContent=isEdit?'Edit Roll':'New Roll';
+    const r=isEdit?data.rolls[idx]:{};
+    document.getElementById('r-film').value=r.film||'';document.getElementById('r-cam').value=r.camera||'';
+    document.getElementById('r-date').value=r.date||'';document.getElementById('r-frames').value=r.frames||'';
+    document.getElementById('r-note').value=r.note||'';setSelectVal('r-dev',r.dev||'pending');
+  }
+  if(type==='featured'){
+    document.getElementById('feat-title').value=featured.title||'';document.getElementById('feat-cap-input').value=featured.caption||'';
+    const p=document.getElementById('feat-img-prev');if(featured.img){p.src=featured.img;p.style.display='block';}else{p.src='';p.style.display='none';}
+  }
   document.getElementById('overlay-'+type).classList.add('show');
 }
 function closeOv(){document.querySelectorAll('.overlay').forEach(o=>o.classList.remove('show'));}
 document.querySelectorAll('.overlay').forEach(o=>o.addEventListener('click',e=>{if(e.target===o)closeOv();}));
-function saveCam(){const idx=editIdx.camera;const existing=idx>=0?data.cameras[idx]:{};const cam={brand:document.getElementById('c-brand').value||'未命名',model:document.getElementById('c-model').value||'',type:document.getElementById('c-type').value,format:document.getElementById('c-format').value,lens:document.getElementById('c-lens').value,status:document.getElementById('c-status').value,price:document.getElementById('c-price').value,note:document.getElementById('c-note').value,img:getImg('c-img-prev',idx>=0?data.cameras[idx].img:''),lenses:existing.lenses||[]};if(idx>=0)data.cameras[idx]=cam;else data.cameras.push(cam);syncType('cameras');render();closeOv();}
-function saveFilm(){const idx=editIdx.film;const film={brand:document.getElementById('f-brand').value||'未命名',name:document.getElementById('f-name').value||'',iso:document.getElementById('f-iso').value,type:document.getElementById('f-type').value,stock:document.getElementById('f-stock').value||0,price:document.getElementById('f-price').value,color:pickedColor,img:getImg('f-img-prev',idx>=0?data.films[idx].img:'')};if(idx>=0)data.films[idx]=film;else data.films.push(film);syncType('films');render();closeOv();}
-function saveRoll(){const idx=editIdx.roll;const roll={film:document.getElementById('r-film').value||'未命名',camera:document.getElementById('r-cam').value||'',date:document.getElementById('r-date').value,frames:document.getElementById('r-frames').value||36,dev:document.getElementById('r-dev').value,note:document.getElementById('r-note').value};if(idx>=0)data.rolls[idx]=roll;else data.rolls.push(roll);syncType('rolls');render();closeOv();}
-function saveFeatured(){featured={title:document.getElementById('feat-title').value,caption:document.getElementById('feat-cap-input').value,img:getImg('feat-img-prev',featured.img||'')};localStorage.setItem(LS_FEAT,JSON.stringify(featured));render();closeOv();}
+
+function saveCam(){
+  const idx=editIdx.camera;const existing=idx>=0?data.cameras[idx]:{};
+  const cam={brand:document.getElementById('c-brand').value||'未命名',model:document.getElementById('c-model').value||'',type:document.getElementById('c-type').value,format:document.getElementById('c-format').value,lens:document.getElementById('c-lens').value,status:document.getElementById('c-status').value,price:document.getElementById('c-price').value,note:document.getElementById('c-note').value,img:getImg('c-img-prev',idx>=0?data.cameras[idx].img:''),lenses:existing.lenses||[]};
+  if(idx>=0)data.cameras[idx]=cam;else data.cameras.push(cam);
+  syncType('cameras');render();closeOv();
+}
+function saveFilm(){
+  const idx=editIdx.film;
+  const film={brand:document.getElementById('f-brand').value||'未命名',name:document.getElementById('f-name').value||'',iso:document.getElementById('f-iso').value,type:document.getElementById('f-type').value,stock:document.getElementById('f-stock').value||0,price:document.getElementById('f-price').value,color:pickedColor,img:getImg('f-img-prev',idx>=0?data.films[idx].img:'')};
+  if(idx>=0)data.films[idx]=film;else data.films.push(film);
+  syncType('films');render();closeOv();
+}
+function saveRoll(){
+  const idx=editIdx.roll;
+  const roll={film:document.getElementById('r-film').value||'未命名',camera:document.getElementById('r-cam').value||'',date:document.getElementById('r-date').value,frames:document.getElementById('r-frames').value||36,dev:document.getElementById('r-dev').value,note:document.getElementById('r-note').value};
+  if(idx>=0)data.rolls[idx]=roll;else data.rolls.push(roll);
+  syncType('rolls');render();closeOv();
+}
+function saveFeatured(){
+  featured={title:document.getElementById('feat-title').value,caption:document.getElementById('feat-cap-input').value,img:getImg('feat-img-prev',featured.img||'')};
+  localStorage.setItem(LS_FEAT,JSON.stringify(featured));render();closeOv();
+}
+
 render();
 </script>
 </body>
