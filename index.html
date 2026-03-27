@@ -102,6 +102,25 @@ main{margin-left:var(--w);flex:1;min-height:100vh;}
 .cam-spec{font-size:11px;color:var(--text2);line-height:1.7;}
 .cam-price{font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:var(--red);margin-top:10px;padding-top:10px;border-top:1px solid var(--border);}
 .card-actions{display:flex;gap:6px;margin-top:10px;}
+.lens-section{border-top:1px solid var(--border);margin-top:10px;padding-top:10px;display:none;}
+.lens-section.open{display:block;}
+.lens-toggle{width:100%;padding:6px;background:none;border:1px solid var(--border);color:var(--text3);font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;transition:all 0.12s;border-radius:2px;margin-top:10px;display:flex;justify-content:space-between;align-items:center;}
+.lens-toggle:hover{border-color:var(--red);color:var(--red);}
+.lens-toggle.open{color:var(--red);border-color:var(--red);background:var(--red-pale);}
+.lens-list{display:flex;flex-direction:column;gap:6px;margin-bottom:10px;}
+.lens-item{display:flex;align-items:center;justify-content:space-between;padding:8px 10px;background:var(--cream);border-radius:2px;border:1px solid var(--border);}
+.lens-item-info{display:flex;flex-direction:column;gap:2px;}
+.lens-focal{font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--text);letter-spacing:0.05em;line-height:1;}
+.lens-name{font-size:10px;color:var(--text3);letter-spacing:0.03em;}
+.lens-aperture{font-family:'Space Mono',monospace;font-size:11px;color:var(--red);font-weight:700;}
+.lens-del{background:none;border:none;color:var(--text3);cursor:pointer;font-size:12px;padding:4px 6px;transition:color 0.12s;border-radius:2px;}
+.lens-del:hover{color:var(--red);background:var(--red-pale);}
+.lens-add-row{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:6px;margin-top:6px;}
+.lens-input{background:var(--white);border:1.5px solid var(--border2);color:var(--text);font-family:'Noto Sans TC',sans-serif;font-size:12px;padding:6px 8px;border-radius:2px;outline:none;transition:border-color 0.12s;width:100%;}
+.lens-input:focus{border-color:var(--red);}
+.lens-add-btn{padding:6px 10px;background:var(--red);border:none;color:#fff;font-family:'Space Mono',monospace;font-size:10px;cursor:pointer;border-radius:2px;white-space:nowrap;transition:background 0.12s;}
+.lens-add-btn:hover{background:var(--red2);}
+.lens-empty{font-size:11px;color:var(--text3);padding:6px 0;font-style:italic;}
 .btn-edit{flex:1;padding:6px;background:var(--cream2);border:1px solid var(--border);color:var(--text2);font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.12s;border-radius:2px;}
 .btn-edit:hover{background:var(--red);color:#fff;border-color:var(--red);}
 .btn-del-card{padding:6px 10px;background:var(--cream2);border:1px solid var(--border);color:var(--text3);font-size:11px;cursor:pointer;transition:all 0.12s;border-radius:2px;}
@@ -318,7 +337,7 @@ main{margin-left:var(--w);flex:1;min-height:100vh;}
 </div>
 <script>
 const API='https://script.google.com/macros/s/AKfycbyPpEOVQObvG3Mm68zEKqC9M99sQ6uIHNL_qPo8uRy2StPm0dF-_01Sg3GJpWxcwQ2N/exec';
-const PASSWORD='film';
+const PASSWORD='film2025';
 const LS_FEAT='filmlog-featured';
 let unlocked=sessionStorage.getItem('unlocked')==='1';
 let data={cameras:[],films:[],rolls:[]};
@@ -389,7 +408,7 @@ function openOv(type,idx){
 }
 function closeOv(){document.querySelectorAll('.overlay').forEach(o=>o.classList.remove('show'));}
 document.querySelectorAll('.overlay').forEach(o=>o.addEventListener('click',e=>{if(e.target===o)closeOv();}));
-function saveCam(){const idx=editIdx.camera;const cam={brand:document.getElementById('c-brand').value||'未命名',model:document.getElementById('c-model').value||'',type:document.getElementById('c-type').value,format:document.getElementById('c-format').value,lens:document.getElementById('c-lens').value,status:document.getElementById('c-status').value,price:document.getElementById('c-price').value,note:document.getElementById('c-note').value,img:getImg('c-img-prev',idx>=0?data.cameras[idx].img:'')};if(idx>=0)data.cameras[idx]=cam;else data.cameras.push(cam);syncType('cameras');render();closeOv();}
+function saveCam(){const idx=editIdx.camera;const existing=idx>=0?data.cameras[idx]:{};const cam={brand:document.getElementById('c-brand').value||'未命名',model:document.getElementById('c-model').value||'',type:document.getElementById('c-type').value,format:document.getElementById('c-format').value,lens:document.getElementById('c-lens').value,status:document.getElementById('c-status').value,price:document.getElementById('c-price').value,note:document.getElementById('c-note').value,img:getImg('c-img-prev',idx>=0?data.cameras[idx].img:''),lenses:existing.lenses||[]};if(idx>=0)data.cameras[idx]=cam;else data.cameras.push(cam);syncType('cameras');render();closeOv();}
 function saveFilm(){const idx=editIdx.film;const film={brand:document.getElementById('f-brand').value||'未命名',name:document.getElementById('f-name').value||'',iso:document.getElementById('f-iso').value,type:document.getElementById('f-type').value,stock:document.getElementById('f-stock').value||0,price:document.getElementById('f-price').value,color:pickedColor,img:getImg('f-img-prev',idx>=0?data.films[idx].img:'')};if(idx>=0)data.films[idx]=film;else data.films.push(film);syncType('films');render();closeOv();}
 function saveRoll(){const idx=editIdx.roll;const roll={film:document.getElementById('r-film').value||'未命名',camera:document.getElementById('r-cam').value||'',date:document.getElementById('r-date').value,frames:document.getElementById('r-frames').value||36,dev:document.getElementById('r-dev').value,note:document.getElementById('r-note').value};if(idx>=0)data.rolls[idx]=roll;else data.rolls.push(roll);syncType('rolls');render();closeOv();}
 function saveFeatured(){featured={title:document.getElementById('feat-title').value,caption:document.getElementById('feat-cap-input').value,img:getImg('feat-img-prev',featured.img||'')};localStorage.setItem(LS_FEAT,JSON.stringify(featured));render();closeOv();}
