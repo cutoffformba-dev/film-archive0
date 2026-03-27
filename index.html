@@ -9,6 +9,8 @@
 :root{
   --navy:#1a2a4a;--navy2:#243660;--navy3:#0f1d36;--navy-pale:#eef2f8;
   --red:#d42b14;--red2:#b02010;--red-pale:#fff2f0;
+  --caramel:#c8813a;--caramel2:#a86828;--caramel-pale:#fdf0e0;
+  --amber:#f5eed8;--amber2:#ede0c0;--amber3:#d8c898;
   --cream:#faf6f0;--cream2:#f2ece4;--cream3:#e8e0d6;--cream4:#ede4d8;
   --white:#ffffff;--warm:#fffcf8;
   --text:#1a1410;--text2:#6a5a50;--text3:#a89888;
@@ -44,6 +46,8 @@ main{margin-left:var(--w);flex:1;min-height:100vh;}
 
 /* TOPBAR */
 .topbar{background:var(--white);border-bottom:3px solid var(--navy);padding:0 40px;display:flex;justify-content:space-between;align-items:center;min-height:72px;}
+#page-films .topbar{border-bottom-color:var(--caramel);}
+#page-album .topbar{border-bottom-color:var(--caramel);}
 .topbar-left{}
 .topbar-title{font-family:'Bebas Neue',sans-serif;font-size:38px;color:var(--text);letter-spacing:0.06em;line-height:1;}
 .topbar-sub{font-family:'Playfair Display',serif;font-style:italic;font-size:12px;color:var(--text3);margin-top:1px;}
@@ -54,7 +58,7 @@ main{margin-left:var(--w);flex:1;min-height:100vh;}
 /* HOME HERO */
 .home-hero{background:var(--navy);padding:0;margin-bottom:28px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;border-radius:4px;overflow:hidden;}
 .home-stat{padding:24px 28px;border-right:1px solid rgba(255,255,255,0.1);}
-.home-stat:first-child{padding:32px 36px;background:rgba(0,0,0,0.15);}
+.home-stat:first-child{padding:32px 36px;background:rgba(0,0,0,0.2);border-left:4px solid var(--caramel);}
 .home-stat:last-child{border-right:none;}
 .home-stat-lbl{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:6px;}
 .home-stat-val{font-family:'Bebas Neue',sans-serif;font-size:40px;color:#fff;line-height:1;}
@@ -63,6 +67,8 @@ main{margin-left:var(--w);flex:1;min-height:100vh;}
 
 /* SECTION HEAD */
 .section-head{display:flex;align-items:baseline;gap:12px;margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--navy);}
+.section-head.warm{border-bottom-color:var(--caramel);}
+.section-tag{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;padding:3px 10px;background:var(--amber);color:var(--caramel2);border-radius:20px;}
 .section-en{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:0.06em;color:var(--text);}
 .section-jp{font-family:'Playfair Display',serif;font-style:italic;font-size:12px;color:var(--text3);}
 .section-count{font-family:'Space Mono',monospace;font-size:11px;color:var(--text3);margin-left:auto;}
@@ -73,7 +79,7 @@ main{margin-left:var(--w);flex:1;min-height:100vh;}
 .featured-ph{height:320px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;}
 .featured-ph-icon{font-family:'Bebas Neue',sans-serif;font-size:52px;color:var(--cream3);letter-spacing:0.05em;}
 .featured-ph-lbl{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--text3);}
-.featured-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(26,42,74,0.85) 0%,rgba(26,42,74,0.2) 40%,transparent 70%);display:flex;align-items:flex-end;padding:24px 28px;pointer-events:none;}
+.featured-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(26,18,8,0.88) 0%,rgba(26,42,74,0.3) 45%,transparent 70%);display:flex;align-items:flex-end;padding:24px 28px;pointer-events:none;}
 .featured-caption-title{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:0.05em;line-height:1;color:#fff;}
 .featured-caption-sub{font-family:'Playfair Display',serif;font-style:italic;font-size:13px;color:rgba(255,255,255,0.7);margin-top:6px;}
 .featured-edit-btn{position:absolute;top:12px;right:12px;background:rgba(255,255,255,0.92);border:none;color:var(--text);font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;padding:6px 12px;cursor:pointer;border-radius:2px;transition:all 0.12s;}
@@ -101,7 +107,7 @@ main{margin-left:var(--w);flex:1;min-height:100vh;}
 .warn-item.zero{border-color:var(--red);background:var(--red-pale);}
 .warn-name{font-weight:500;font-size:13px;}.warn-brand{font-size:11px;color:var(--text3);}
 .warn-badge{font-family:'Space Mono',monospace;font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;white-space:nowrap;}
-.badge-low{background:var(--navy-pale);color:var(--navy);}.badge-out{background:var(--red-pale);color:var(--red);}
+.badge-low{background:var(--caramel-pale);color:var(--caramel2);}.badge-out{background:var(--red-pale);color:var(--red);}
 .pending-item{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:var(--white);border:1.5px solid var(--border);border-radius:3px;}
 .pending-film{font-weight:500;font-size:13px;}.pending-cam{font-size:11px;color:var(--text3);}
 .pending-date{font-family:'Space Mono',monospace;font-size:10px;color:var(--text3);}
@@ -113,12 +119,14 @@ main{margin-left:var(--w);flex:1;min-height:100vh;}
 .roll-table th{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--text2);background:var(--navy-pale);padding:10px 14px;text-align:left;font-weight:400;border-bottom:1.5px solid var(--border);}
 .roll-table td{padding:12px 14px;border-bottom:1px solid var(--border);font-size:12px;vertical-align:middle;}
 .roll-table tr:last-child td{border-bottom:none;}
-.roll-table tr:hover td{background:var(--cream);}
+.roll-table tr:hover td{background:var(--amber);}
+.roll-table tr:nth-child(even) td{background:var(--cream);}
+.roll-table tr:nth-child(even):hover td{background:var(--amber2);}
 .roll-no{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--text3);line-height:1;}
 .roll-film-name{font-weight:500;color:var(--text);font-size:13px;}
 .roll-film-note{font-size:10px;color:var(--text3);margin-top:1px;font-family:'Playfair Display',serif;font-style:italic;}
 .dev-tag{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.08em;text-transform:uppercase;padding:3px 8px;border:1px solid currentColor;border-radius:20px;white-space:nowrap;}
-.dev-pending{color:var(--text3);}.dev-done{color:#207840;}.dev-scan{color:var(--navy);}
+.dev-pending{color:var(--text3);}.dev-done{color:#207840;}.dev-scan{color:var(--caramel2);}
 .btn-row-edit{background:none;border:1px solid var(--border);color:var(--text2);cursor:pointer;font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.1em;padding:3px 8px;border-radius:2px;transition:all 0.12s;margin-right:4px;}
 .btn-row-edit:hover{background:var(--navy);color:#fff;border-color:var(--navy);}
 .btn-row-del{background:none;border:1px solid var(--border);color:var(--text3);cursor:pointer;font-size:11px;padding:3px 7px;border-radius:2px;transition:all 0.12s;margin-right:4px;}
@@ -128,7 +136,15 @@ main{margin-left:var(--w);flex:1;min-height:100vh;}
 
 /* CAMERA CARDS */
 .cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;}
+.cards-grid-masonry{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.cards-grid-masonry .camera-card:nth-child(1){grid-column:span 2;}
+.cards-grid-masonry .film-card:nth-child(3n+1){grid-column:span 1;}
+@media(max-width:900px){.cards-grid-masonry{grid-template-columns:repeat(2,1fr);}.cards-grid-masonry .camera-card:nth-child(1){grid-column:span 2;}}
+@media(max-width:600px){.cards-grid-masonry{grid-template-columns:1fr;}.cards-grid-masonry .camera-card:nth-child(1){grid-column:span 1;}}
 .camera-card{background:var(--white);border:1.5px solid var(--border);border-radius:4px;overflow:hidden;transition:box-shadow 0.12s;}
+.camera-card:nth-child(2n){background:var(--amber);}
+.camera-card:nth-child(3n){background:var(--cream2);}
+.camera-card:nth-child(1){background:var(--white);}
 .camera-card:hover{box-shadow:4px 4px 0 var(--navy);border-color:var(--navy);}
 .cam-img{height:160px;background:var(--cream2);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;cursor:pointer;border-bottom:1.5px solid var(--border);}
 .cam-img img{width:100%;height:100%;object-fit:cover;}
@@ -141,12 +157,12 @@ main{margin-left:var(--w);flex:1;min-height:100vh;}
 .cam-type-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;}
 .cam-type{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text3);}
 .status-pill{font-family:'Space Mono',monospace;font-size:9px;padding:2px 8px;border-radius:2px;text-transform:uppercase;letter-spacing:0.08em;}
-.status-active{background:var(--navy-pale);color:var(--navy);}
+.status-active{background:var(--caramel-pale);color:var(--caramel2);}
 .status-shelf{background:var(--cream2);color:var(--text3);}
 .cam-name{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--text);letter-spacing:0.03em;line-height:1;margin-bottom:3px;}
 .cam-italic{font-family:'Playfair Display',serif;font-style:italic;font-size:11px;color:var(--text3);display:block;margin-bottom:6px;}
 .cam-spec{font-size:11px;color:var(--text2);line-height:1.7;}
-.cam-price{font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:var(--red);margin-top:10px;padding-top:10px;border-top:1px solid var(--border);}
+.cam-price{font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:var(--caramel2);margin-top:10px;padding-top:10px;border-top:1px solid var(--border);}
 .card-actions{display:flex;gap:6px;margin-top:10px;}
 .btn-edit{flex:1;padding:6px;background:var(--cream2);border:1px solid var(--border);color:var(--text2);font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.12s;border-radius:2px;}
 .btn-edit:hover{background:var(--navy);color:#fff;border-color:var(--navy);}
@@ -176,6 +192,8 @@ main{margin-left:var(--w);flex:1;min-height:100vh;}
 
 /* FILM CARDS */
 .film-card{background:var(--white);border:1.5px solid var(--border);border-radius:4px;overflow:hidden;transition:box-shadow 0.12s;}
+.film-card:nth-child(2n){background:var(--amber);}
+.film-card:nth-child(3n){background:var(--caramel-pale);}
 .film-card:hover{box-shadow:4px 4px 0 var(--navy);border-color:var(--navy);}
 .film-img{height:130px;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;cursor:pointer;border-bottom:1.5px solid var(--border);}
 .film-img img{width:100%;height:100%;object-fit:cover;}
@@ -199,7 +217,7 @@ main{margin-left:var(--w);flex:1;min-height:100vh;}
 #page-album{background:var(--warm);}
 .album-back{display:flex;align-items:center;gap:8px;background:none;border:none;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--navy);cursor:pointer;padding:0;margin-bottom:20px;transition:opacity 0.12s;}
 .album-back:hover{opacity:0.7;}
-.album-info{background:var(--navy);color:#fff;padding:20px 28px;border-radius:4px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.album-info{background:var(--navy);color:#fff;padding:20px 28px;border-radius:4px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;border-left:5px solid var(--caramel);}
 .album-roll-name{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:0.05em;line-height:1;}
 .album-roll-meta{font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,0.5);margin-top:4px;letter-spacing:0.1em;}
 .album-add-btn{display:flex;align-items:center;gap:6px;padding:9px 18px;background:var(--red);color:#fff;border:none;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:background 0.12s;white-space:nowrap;}
@@ -346,12 +364,12 @@ main{margin-left:var(--w);flex:1;min-height:100vh;}
   <!-- CAMERAS -->
   <div class="page" id="page-cameras">
     <div class="topbar"><div class="topbar-left"><div class="topbar-title">Cameras</div><div class="topbar-sub">相機庫 — 點圖片更換照片</div></div><button class="btn-add" onclick="openOv('camera',-1)">＋ ADD</button></div>
-    <div class="content"><div class="section-head"><span class="section-en">My Collection</span><span class="section-jp">コレクション</span><span class="section-count" id="cam-count">0 台</span></div><div class="cards-grid" id="cameras-grid"></div></div>
+    <div class="content"><div class="section-head"><span class="section-en">My Collection</span><span class="section-jp">コレクション</span><span class="section-count" id="cam-count">0 台</span></div><div class="cards-grid cards-grid-masonry" id="cameras-grid"></div></div>
   </div>
   <!-- FILMS -->
   <div class="page" id="page-films">
     <div class="topbar"><div class="topbar-left"><div class="topbar-title">Film Stock</div><div class="topbar-sub">底片庫 — 點圖片更換照片</div></div><button class="btn-add" onclick="openOv('film',-1)">＋ ADD</button></div>
-    <div class="content"><div class="section-head"><span class="section-en">My Films</span><span class="section-jp">フィルムストック</span><span class="section-count" id="film-count">0 種</span></div><div class="cards-grid" id="films-grid"></div></div>
+    <div class="content"><div class="section-head warm"><span class="section-en">My Films</span><span class="section-jp">フィルムストック</span><span class="section-count" id="film-count">0 種</span></div><div class="cards-grid cards-grid-masonry" id="films-grid"></div></div>
   </div>
   <!-- ROLLS -->
   <div class="page" id="page-rolls">
@@ -406,7 +424,7 @@ main{margin-left:var(--w);flex:1;min-height:100vh;}
   <div class="ov-box">
     <div class="ov-head"><div class="ov-title" id="roll-ov-title">New Roll</div><button class="ov-close" onclick="closeOv()">✕</button></div>
     <div class="ov-body">
-      <div class="form-row"><div class="form-g"><label class="form-l">Film</label><input class="form-i" id="r-film" placeholder="Portra 400"></div><div class="form-g"><label class="form-l">Camera</label><input class="form-i" id="r-cam" placeholder="Ricoh GR21"></div></div>
+      <div class="form-row"><div class="form-g"><label class="form-l">Film</label><input class="form-i" id="r-film" placeholder="Portra 400"></div><div class="form-g"><label class="form-l">Camera</label><select class="form-s" id="r-cam"><option value="">選擇相機...</option></select></div></div>
       <div class="form-row"><div class="form-g"><label class="form-l">Date</label><input class="form-i" id="r-date" type="date"></div><div class="form-g"><label class="form-l">Frames</label><input class="form-i" id="r-frames" type="number" placeholder="36"></div></div>
       <div class="form-g"><label class="form-l">Status</label><select class="form-s" id="r-dev"><option value="pending">尚未沖洗</option><option value="done">已沖洗</option><option value="scan">已掃描</option></select></div>
       <div class="form-g"><label class="form-l">Notes</label><textarea class="form-ta" id="r-note" placeholder="地點、主題、心得..."></textarea></div>
@@ -764,7 +782,17 @@ function openOv(type,idx){
   if(type==='roll'){
     document.getElementById('roll-ov-title').textContent=isEdit?'Edit Roll':'New Roll';
     const r=isEdit?data.rolls[idx]:{};
-    document.getElementById('r-film').value=r.film||'';document.getElementById('r-cam').value=r.camera||'';
+    document.getElementById('r-film').value=r.film||'';
+    // Populate camera select from cameras data
+    const camSel=document.getElementById('r-cam');
+    camSel.innerHTML='<option value="">選擇相機...</option>'+
+      data.cameras.map(c=>`<option value="${c.brand} ${c.model}">${c.brand} ${c.model}</option>`).join('')+
+      '<option value="__other__">其他（手動輸入）</option>';
+    if(r.camera){
+      const opt=[...camSel.options].find(o=>o.value===r.camera);
+      if(opt)camSel.value=r.camera;
+      else{camSel.innerHTML+=`<option value="${r.camera}" selected>${r.camera}</option>`;camSel.value=r.camera;}
+    }
     document.getElementById('r-date').value=r.date||'';document.getElementById('r-frames').value=r.frames||'';
     document.getElementById('r-note').value=r.note||'';setSelectVal('r-dev',r.dev||'pending');
   }
@@ -791,7 +819,7 @@ function saveFilm(){
 }
 function saveRoll(){
   const idx=editIdx.roll;
-  const roll={film:document.getElementById('r-film').value||'未命名',camera:document.getElementById('r-cam').value||'',date:document.getElementById('r-date').value,frames:document.getElementById('r-frames').value||36,dev:document.getElementById('r-dev').value,note:document.getElementById('r-note').value};
+  const camVal=document.getElementById('r-cam').value;const roll={film:document.getElementById('r-film').value||'未命名',camera:camVal==='__other__'?'':camVal||'',date:document.getElementById('r-date').value,frames:document.getElementById('r-frames').value||36,dev:document.getElementById('r-dev').value,note:document.getElementById('r-note').value};
   if(idx>=0)data.rolls[idx]=roll;else data.rolls.push(roll);
   syncType('rolls');render();closeOv();
 }
