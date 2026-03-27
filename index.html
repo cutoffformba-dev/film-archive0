@@ -4,17 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FILM LOG</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+TC:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+TC:wght@300;400;500&family=Space+Mono:wght@400;700&family=Playfair+Display:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
 <style>
-:root{--red:#d42b14;--red2:#b02010;--red-pale:#fff2f0;--cream:#faf6f0;--cream2:#f2ece4;--cream3:#e8e0d6;--white:#ffffff;--text:#2a1f1a;--text2:#7a6a60;--text3:#b0a098;--border:rgba(42,31,26,0.12);--border2:rgba(42,31,26,0.22);--w:210px;}
+:root{--red:#d42b14;--red2:#b02010;--red-pale:#fff2f0;--red-light:#fde8e5;--cream:#faf6f0;--cream2:#f2ece4;--cream3:#e8e0d6;--cream4:#ede4d8;--white:#ffffff;--warm:#fffcf8;--text:#2a1f1a;--text2:#7a6a60;--text3:#b0a098;--border:rgba(42,31,26,0.12);--border2:rgba(42,31,26,0.22);--w:210px;}
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Noto Sans TC',sans-serif;background:var(--cream);color:var(--text);display:flex;min-height:100vh;font-size:13px;line-height:1.6;}
+body{font-family:'Noto Sans TC',sans-serif;background:var(--warm);color:var(--text);display:flex;min-height:100vh;font-size:13px;line-height:1.6;}
 nav{width:var(--w);background:var(--red);min-height:100vh;position:fixed;top:0;left:0;bottom:0;display:flex;flex-direction:column;z-index:100;}
 .nav-head{padding:24px 20px 18px;border-bottom:1px solid rgba(255,255,255,0.15);}
 .nav-logo{font-family:'Bebas Neue',sans-serif;font-size:32px;color:#fff;letter-spacing:0.06em;line-height:1;}
 .nav-logo-sub{font-family:'Space Mono',monospace;font-size:9px;color:rgba(255,255,255,0.5);letter-spacing:0.18em;text-transform:uppercase;margin-top:4px;}
 .nav-body{flex:1;padding:10px 0;}
-.nav-lbl{font-family:'Space Mono',monospace;font-size:8px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.35);padding:14px 20px 4px;}
+.nav-lbl{font-family:'Space Mono',monospace;font-size:8px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.4);padding:16px 20px 4px;border-top:1px solid rgba(255,255,255,0.08);margin-top:4px;}.nav-lbl:first-child{border-top:none;margin-top:0;}
 .nav-item{display:flex;align-items:center;padding:10px 20px;cursor:pointer;color:rgba(255,255,255,0.6);font-size:12px;letter-spacing:0.03em;transition:all 0.12s;border-left:3px solid transparent;}
 .nav-item:hover{color:#fff;background:rgba(255,255,255,0.1);}
 .nav-item.active{color:#fff;border-left-color:#fff;background:rgba(255,255,255,0.15);font-weight:500;}
@@ -25,32 +25,32 @@ nav{width:var(--w);background:var(--red);min-height:100vh;position:fixed;top:0;l
 .nav-stat-val{color:rgba(255,255,255,0.65);}
 main{margin-left:var(--w);flex:1;min-height:100vh;}
 .page{display:none;}.page.active{display:block;}
-.topbar{background:var(--white);border-bottom:2px solid var(--red);padding:0 36px;display:flex;justify-content:space-between;align-items:center;min-height:68px;}
-.topbar-title{font-family:'Bebas Neue',sans-serif;font-size:34px;color:var(--text);letter-spacing:0.06em;line-height:1;}
+.topbar{background:var(--white);border-bottom:2px solid var(--red);padding:0 36px;display:flex;justify-content:space-between;align-items:center;min-height:72px;}
+.topbar-title{font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--text);letter-spacing:0.06em;line-height:1;}.topbar-sub{font-size:11px;color:var(--text3);letter-spacing:0.06em;margin-top:2px;font-family:'Playfair Display',serif;font-style:italic;}
 .topbar-sub{font-size:11px;color:var(--text3);letter-spacing:0.06em;margin-top:2px;}
 .btn-add{display:flex;align-items:center;gap:6px;padding:9px 20px;background:var(--red);color:#fff;border:none;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:background 0.12s;border-radius:2px;}
 .btn-add:hover{background:var(--red2);}
-.content{padding:28px 36px 60px;}
-.home-hero{background:var(--red);padding:28px 32px;margin-bottom:24px;display:grid;grid-template-columns:1fr 1fr 1fr 1fr;}
+.content{padding:32px 40px 80px;}
+.home-hero{background:var(--red);padding:0;margin-bottom:28px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;overflow:hidden;border-radius:4px;}
 .home-stat{padding:0 24px;border-right:1px solid rgba(255,255,255,0.2);}
 .home-stat:first-child{padding-left:0;}.home-stat:last-child{border-right:none;}
 .home-stat-lbl{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:6px;}
-.home-stat-val{font-family:'Bebas Neue',sans-serif;font-size:40px;color:#fff;line-height:1;}
+.home-stat-val{font-family:'Bebas Neue',sans-serif;font-size:40px;color:#fff;line-height:1;}.home-stat:first-child .home-stat-val{font-size:56px;}.home-stat:first-child .home-stat-lbl{font-size:10px;letter-spacing:0.25em;}
 .home-stat-sub{font-family:'Space Mono',monospace;font-size:11px;color:rgba(255,255,255,0.45);margin-top:3px;}
 .featured-wrap{position:relative;margin-bottom:24px;background:var(--cream2);border:1.5px solid var(--border);border-radius:4px;overflow:hidden;cursor:pointer;}
-.featured-img{width:100%;height:280px;object-fit:cover;display:block;}
-.featured-ph{height:280px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;}
+.featured-img{width:100%;height:320px;object-fit:cover;display:block;}
+.featured-ph{height:320px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;}
 .featured-ph-icon{font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--cream3);letter-spacing:0.05em;}
 .featured-ph-lbl{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--text3);}
-.featured-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(42,31,26,0.7) 0%,transparent 50%);display:flex;align-items:flex-end;padding:20px 24px;pointer-events:none;}
-.featured-caption-title{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:0.05em;line-height:1;color:#fff;}
+.featured-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(42,31,26,0.8) 0%,rgba(42,31,26,0.2) 40%,transparent 70%);display:flex;align-items:flex-end;padding:24px 28px;pointer-events:none;}
+.featured-caption-title{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:0.05em;line-height:1;color:#fff;}.featured-caption-sub{font-family:'Playfair Display',serif;font-style:italic;font-size:13px;color:rgba(255,255,255,0.7);letter-spacing:0.03em;margin-top:6px;}
 .featured-caption-sub{font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,0.6);letter-spacing:0.1em;margin-top:4px;}
 .featured-edit-btn{position:absolute;top:12px;right:12px;background:rgba(255,255,255,0.9);border:none;color:var(--text);font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.15em;text-transform:uppercase;padding:6px 12px;cursor:pointer;border-radius:2px;transition:all 0.12s;}
 .featured-edit-btn:hover{background:var(--red);color:#fff;}
-.home-cols{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px;}
-.section-head{display:flex;align-items:baseline;gap:12px;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(--red);}
+.home-cols{display:grid;grid-template-columns:3fr 2fr;gap:24px;margin-bottom:28px;}.home-cols.reverse{grid-template-columns:2fr 3fr;}
+.section-head{display:flex;align-items:baseline;gap:12px;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(--red);}.section-italic{font-family:'Playfair Display',serif;font-style:italic;font-size:13px;color:var(--text3);margin-left:auto;}
 .section-en{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:0.06em;color:var(--text);}
-.section-jp{font-size:11px;color:var(--text3);}
+.section-jp{font-size:11px;color:var(--text3);font-family:'Playfair Display',serif;font-style:italic;}
 .section-count{font-family:'Space Mono',monospace;font-size:11px;color:var(--text3);margin-left:auto;}
 .cam-strip{display:flex;gap:10px;overflow-x:auto;padding-bottom:4px;}
 .cam-strip::-webkit-scrollbar{height:3px;}.cam-strip::-webkit-scrollbar-track{background:var(--cream2);}.cam-strip::-webkit-scrollbar-thumb{background:var(--cream3);border-radius:2px;}
@@ -62,7 +62,7 @@ main{margin-left:var(--w);flex:1;min-height:100vh;}
 .cam-thumb-name{font-family:'Space Mono',monospace;font-size:9px;color:var(--text2);letter-spacing:0.05em;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .cam-thumb-model{font-size:10px;color:var(--text3);text-align:center;}
 .warn-list{display:flex;flex-direction:column;gap:6px;}
-.warn-item{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:var(--white);border:1.5px solid var(--border);border-radius:3px;}
+.warn-item{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:var(--white);border:1.5px solid var(--border);border-radius:3px;transition:border-color 0.12s;}.warn-item:hover{border-color:var(--red2);}
 .warn-item.zero{border-color:var(--red);background:var(--red-pale);}
 .warn-name{font-weight:500;font-size:13px;}.warn-brand{font-size:11px;color:var(--text3);}
 .warn-badge{font-family:'Space Mono',monospace;font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;white-space:nowrap;}
@@ -73,7 +73,7 @@ main{margin-left:var(--w);flex:1;min-height:100vh;}
 .pending-date{font-family:'Space Mono',monospace;font-size:10px;color:var(--text3);white-space:nowrap;}
 .roll-wrap{background:var(--white);border:1.5px solid var(--border);border-radius:4px;overflow:hidden;}
 .roll-table{width:100%;border-collapse:collapse;}
-.roll-table th{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--text3);background:var(--cream2);padding:10px 14px;text-align:left;font-weight:400;border-bottom:1.5px solid var(--border);}
+.roll-table th{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--text2);background:var(--cream4);padding:10px 14px;text-align:left;font-weight:400;border-bottom:1.5px solid var(--border);}
 .roll-table td{padding:12px 14px;border-bottom:1px solid var(--border);font-size:12px;vertical-align:middle;}
 .roll-table tr:last-child td{border-bottom:none;}
 .roll-table tr:hover td{background:var(--cream);}
@@ -85,7 +85,7 @@ main{margin-left:var(--w);flex:1;min-height:100vh;}
 .cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;}
 .camera-card{background:var(--white);border:1.5px solid var(--border);border-radius:4px;overflow:hidden;transition:box-shadow 0.12s;}
 .camera-card:hover{box-shadow:4px 4px 0 var(--red);border-color:var(--red);}
-.cam-img{height:150px;background:var(--cream2);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;cursor:pointer;border-bottom:1.5px solid var(--border);}
+.cam-img{height:160px;background:var(--cream2);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;cursor:pointer;border-bottom:1.5px solid var(--border);}
 .cam-img img{width:100%;height:100%;object-fit:cover;}
 .cam-img-ph{display:flex;flex-direction:column;align-items:center;gap:6px;}
 .cam-img-ph-icon{font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--cream3);letter-spacing:0.05em;}
@@ -98,9 +98,9 @@ main{margin-left:var(--w);flex:1;min-height:100vh;}
 .status-pill{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:0.08em;padding:2px 7px;border-radius:20px;text-transform:uppercase;}
 .status-active{background:var(--red-pale);color:var(--red);}
 .status-shelf{background:var(--cream2);color:var(--text3);}
-.cam-name{font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--text);letter-spacing:0.03em;line-height:1;margin-bottom:8px;}
+.cam-name{font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--text);letter-spacing:0.03em;line-height:1;margin-bottom:4px;}.cam-italic{font-family:'Playfair Display',serif;font-style:italic;font-size:11px;color:var(--text3);margin-bottom:8px;display:block;}
 .cam-spec{font-size:11px;color:var(--text2);line-height:1.7;}
-.cam-price{font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:var(--text);margin-top:10px;padding-top:10px;border-top:1px solid var(--border);}
+.cam-price{font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:var(--red);margin-top:10px;padding-top:10px;border-top:1px solid var(--border);}
 .card-actions{display:flex;gap:6px;margin-top:10px;}
 .btn-edit{flex:1;padding:6px;background:var(--cream2);border:1px solid var(--border);color:var(--text2);font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.12s;border-radius:2px;}
 .btn-edit:hover{background:var(--red);color:#fff;border-color:var(--red);}
@@ -120,7 +120,7 @@ main{margin-left:var(--w);flex:1;min-height:100vh;}
 .film-iso{font-family:'Space Mono',monospace;font-size:10px;color:var(--text3);}
 .film-name{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--text);letter-spacing:0.03em;line-height:1;}
 .film-brand{font-size:11px;color:var(--text3);margin-bottom:8px;}
-.film-foot{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border);}
+.film-foot{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border);}.film-color-bar{height:4px;margin:-12px -14px 12px;}
 .film-stock{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;}
 .stock-ok{color:var(--text);}.stock-zero{color:var(--red);}
 .film-price-sm{font-family:'Space Mono',monospace;font-size:10px;color:var(--text3);}
@@ -232,14 +232,14 @@ main{margin-left:var(--w);flex:1;min-height:100vh;}
           <div class="warn-list" id="stock-warns"></div>
         </div>
       </div>
-      <div class="home-cols">
-        <div>
-          <div class="section-head"><span class="section-en">Pending</span><span class="section-jp">待沖洗膠卷</span></div>
-          <div class="pending-list" id="pending-list"></div>
-        </div>
+      <div class="home-cols reverse">
         <div>
           <div class="section-head"><span class="section-en">Recent</span><span class="section-jp">最近拍攝</span></div>
           <div id="d-recent"></div>
+        </div>
+        <div>
+          <div class="section-head"><span class="section-en">Pending</span><span class="section-jp">待沖洗膠卷</span></div>
+          <div class="pending-list" id="pending-list"></div>
         </div>
       </div>
     </div>
@@ -370,7 +370,7 @@ function rHome(){
     :'<div class="muted">尚無膠卷記錄</div>';
 }
 function rCams(){document.getElementById('cam-count').textContent=data.cameras.length+' 台';const g=document.getElementById('cameras-grid');if(!data.cameras.length){g.innerHTML='<div class="empty"><div class="empty-title">NO CAMERAS YET</div><div class="empty-sub">點右上角新增你的第一台相機</div></div>';return;}g.innerHTML=data.cameras.map((c,i)=>`<div class="camera-card"><div class="cam-img" onclick="upImg('cameras',${i})">${c.img?`<img src="${c.img}">`:`<div class="cam-img-ph"><div class="cam-img-ph-icon">PHOTO</div><div class="cam-img-ph-lbl">${c.brand||''}</div></div>`}<div class="img-hover">Change Photo</div></div><div class="cam-body"><div class="cam-type-row"><span class="cam-type">${c.type||''} · ${c.format||''}</span><span class="status-pill ${c.status==='active'?'status-active':'status-shelf'}">${c.status==='active'?'IN USE':'SHELF'}</span></div><div class="cam-name">${c.brand||''} ${c.model||''}</div><div class="cam-spec">${[c.lens,c.note].filter(Boolean).join(' · ')}</div>${c.price?`<div class="cam-price">NT$ ${parseInt(c.price).toLocaleString()}</div>`:''}<div class="card-actions"><button class="btn-edit" onclick="openOv('camera',${i})">EDIT</button><button class="btn-del-card" onclick="delIt('cameras',${i})">✕</button></div></div></div>`).join('');}
-function rFilms(){document.getElementById('film-count').textContent=data.films.length+' 種';const g=document.getElementById('films-grid');const tM={color:['彩色','tag-color'],bw:['黑白','tag-bw'],slide:['正片','tag-slide'],instant:['即可拍','tag-instant']};if(!data.films.length){g.innerHTML='<div class="empty"><div class="empty-title">NO FILM STOCK YET</div><div class="empty-sub">點右上角新增底片</div></div>';return;}g.innerHTML=data.films.map((f,i)=>{const[tl,tc]=tM[f.type]||['彩色','tag-color'];return`<div class="film-card"><div class="film-img" onclick="upImg('films',${i})">${f.img?`<img src="${f.img}"><div class="img-hover">Change Photo</div>`:`<div class="film-color-ph" style="background:${f.color||'#d42b14'}"><div class="film-color-name">${f.name||''}</div><div class="film-color-brand">${f.brand||''}</div></div><div class="img-hover">Add Photo</div>`}</div><div class="film-body"><div class="film-tags"><span class="film-tag ${tc}">${tl}</span><span class="film-iso">ISO ${f.iso||'—'}</span></div><div class="film-name">${f.name||''}</div><div class="film-brand">${f.brand||''}</div><div class="film-foot"><span class="film-stock ${+f.stock>0?'stock-ok':'stock-zero'}">${+f.stock>0?'剩 '+f.stock+' 卷':'SOLD OUT'}</span>${f.price?`<span class="film-price-sm">NT$${parseInt(f.price)}/卷</span>`:''}</div><div class="card-actions"><button class="btn-edit" onclick="openOv('film',${i})">EDIT</button><button class="btn-del-card" onclick="delIt('films',${i})">✕</button></div></div></div>`;}).join('');}
+function rFilms(){document.getElementById('film-count').textContent=data.films.length+' 種';const g=document.getElementById('films-grid');const tM={color:['彩色','tag-color'],bw:['黑白','tag-bw'],slide:['正片','tag-slide'],instant:['即可拍','tag-instant']};if(!data.films.length){g.innerHTML='<div class="empty"><div class="empty-title">NO FILM STOCK YET</div><div class="empty-sub">點右上角新增底片</div></div>';return;}g.innerHTML=data.films.map((f,i)=>{const[tl,tc]=tM[f.type]||['彩色','tag-color'];return`<div class="film-card"><div class="film-img" onclick="upImg('films',${i})">${f.img?`<img src="${f.img}"><div class="img-hover">Change Photo</div>`:`<div class="film-color-ph" style="background:${f.color||'#d42b14'}"><div class="film-color-name">${f.name||''}</div><div class="film-color-brand">${f.brand||''}</div></div><div class="img-hover">Add Photo</div>`}</div><div class="film-body"><div class="film-color-bar" style="background:${f.color||'#d42b14'}"></div><div class="film-tags"><span class="film-tag ${tc}">${tl}</span><span class="film-iso">ISO ${f.iso||'—'}</span></div><div class="film-name">${f.name||''}</div><div class="film-brand">${f.brand||''}</div><div class="film-foot"><span class="film-stock ${+f.stock>0?'stock-ok':'stock-zero'}">${+f.stock>0?'剩 '+f.stock+' 卷':'SOLD OUT'}</span>${f.price?`<span class="film-price-sm">NT$${parseInt(f.price)}/卷</span>`:''}</div><div class="card-actions"><button class="btn-edit" onclick="openOv('film',${i})">EDIT</button><button class="btn-del-card" onclick="delIt('films',${i})">✕</button></div></div></div>`;}).join('');}
 function rRolls(){document.getElementById('roll-count').textContent=data.rolls.length+' 卷';const dm={pending:['尚未沖洗','dev-pending'],done:['已沖洗','dev-done'],scan:['已掃描','dev-scan']};document.getElementById('rolls-body').innerHTML=data.rolls.length?data.rolls.map((r,i)=>{const[l,c]=dm[r.dev]||['—','dev-pending'];return`<tr><td class="roll-no">${String(i+1).padStart(2,'0')}</td><td><div class="roll-film-name">${r.film}</div>${r.note?`<div class="roll-film-note">${r.note}</div>`:''}</td><td style="color:var(--text2)">${r.camera}</td><td style="color:var(--text3);white-space:nowrap;font-size:12px">${r.date||'—'}</td><td style="color:var(--text2)">${r.frames||36}</td><td><span class="dev-tag ${c}">${l}</span></td><td><button class="btn-row-edit" onclick="openOv('roll',${i})">EDIT</button><button class="btn-row-del" onclick="delIt('rolls',${i})">✕</button></td></tr>`;}).join(''):'<tr><td colspan="7" style="padding:32px;text-align:center;color:var(--text3);font-size:12px;letter-spacing:0.1em">NO ROLLS YET</td></tr>';}
 function rNav(){document.getElementById('ns-cam').textContent=data.cameras.length+' 台';document.getElementById('ns-film').textContent=data.films.length+' 種';document.getElementById('ns-roll').textContent=data.rolls.length+' 卷';}
 function delIt(type,idx){if(!confirm('確定刪除這筆記錄？'))return;data[type].splice(idx,1);syncType(type);render();}
