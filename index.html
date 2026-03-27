@@ -456,6 +456,27 @@ main{margin-left:var(--w);flex:1;min-height:100vh;}
 const API='https://script.google.com/macros/s/AKfycbyPpEOVQObvG3Mm68zEKqC9M99sQ6uIHNL_qPo8uRy2StPm0dF-_01Sg3GJpWxcwQ2N/exec';
 const PASSWORD='film2025';
 const LS_FEAT='filmlog-featured';
+const CLOUD_NAME='dhohnp9ik';
+const UPLOAD_PRESET='film-log';
+
+async function uploadToCloudinary(file){
+  const fd=new FormData();
+  fd.append('file',file);
+  fd.append('upload_preset',UPLOAD_PRESET);
+  fd.append('folder','film-log');
+  showLoad('上傳照片中...');
+  try{
+    const res=await fetch(`https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`,{method:'POST',body:fd});
+    const data=await res.json();
+    hideLoad();
+    if(data.secure_url)return data.secure_url;
+    throw new Error('upload failed');
+  }catch(e){
+    hideLoad();
+    alert('照片上傳失敗，請稍後再試');
+    return null;
+  }
+}
 const LS_CACHE='filmlog-cache-v1';
 const LS_ALBUMS='filmlog-albums-v1';
 
@@ -675,27 +696,26 @@ function rAlbum(){
     </div>`).join('');
 }
 
-function addAlbumPhoto(){
+async function addAlbumPhoto(){
   const inp=document.createElement('input');
   inp.type='file';inp.accept='image/*';inp.multiple=true;
-  inp.onchange=e=>{
+  inp.onchange=async e=>{
     const files=Array.from(e.target.files);
     if(!files.length)return;
-    let loaded=0;
-    files.forEach(file=>{
-      const reader=new FileReader();
-      reader.onload=ev=>{
-        if(!albums[currentAlbumIdx])albums[currentAlbumIdx]=[];
-        albums[currentAlbumIdx].push(ev.target.result);
-        loaded++;
-        if(loaded===files.length){
-          localStorage.setItem(LS_ALBUMS,JSON.stringify(albums));
-          rAlbum();
-          rRolls();
-        }
-      };
-      reader.readAsDataURL(file);
-    });
+    showLoad(`上傳 0 / ${files.length} 張...`);
+    if(!albums[currentAlbumIdx])albums[currentAlbumIdx]=[];
+    let done=0;
+    for(const file of files){
+      const url=await uploadToCloudinary(file);
+      if(url){
+        albums[currentAlbumIdx].push(url);
+        done++;
+        showLoad(`上傳 ${done} / ${files.length} 張...`);
+      }
+    }
+    hideLoad();
+    localStorage.setItem(LS_ALBUMS,JSON.stringify(albums));
+    rAlbum();rRolls();
   };
   inp.click();
 }
@@ -752,7 +772,11 @@ function delIt(type,idx){if(!confirm('確定刪除這筆記錄？'))return;data[
 
 function upImg(type,idx){
   const inp=document.createElement('input');inp.type='file';inp.accept='image/*';
-  inp.onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{data[type][idx].img=ev.target.result;syncType(type);render();};r.readAsDataURL(f);};
+  inp.onchange=async e=>{
+    const f=e.target.files[0];if(!f)return;
+    const url=await uploadToCloudinary(f);
+    if(url){data[type][idx].img=url;syncType(type);render();}
+  };
   inp.click();
 }
 function prevImg(inp,pid){const f=inp.files[0];if(!f)return;const r=new FileReader();r.onload=e=>{const im=document.getElementById(pid);im.src=e.target.result;im.style.display='block';};r.readAsDataURL(f);}
@@ -805,15 +829,31 @@ function openOv(type,idx){
 function closeOv(){document.querySelectorAll('.overlay').forEach(o=>o.classList.remove('show'));}
 document.querySelectorAll('.overlay').forEach(o=>o.addEventListener('click',e=>{if(e.target===o)closeOv();}));
 
-function saveCam(){
+async function saveCam(){
   const idx=editIdx.camera;const existing=idx>=0?data.cameras[idx]:{};
-  const cam={brand:document.getElementById('c-brand').value||'未命名',model:document.getElementById('c-model').value||'',type:document.getElementById('c-type').value,format:document.getElementById('c-format').value,lens:document.getElementById('c-lens').value,status:document.getElementById('c-status').value,price:document.getElementById('c-price').value,note:document.getElementById('c-note').value,img:getImg('c-img-prev',idx>=0?data.cameras[idx].img:''),lenses:existing.lenses||[]};
+  let imgUrl=idx>=0?data.cameras[idx].img:'';
+  const prevEl=document.getElementById('c-img-prev');
+  if(prevEl&&prevEl.style.display!=='none'&&prevEl.src.startsWith('data:')){
+    const res=await fetch(prevEl.src);const blob=await res.blob();
+    const file=new File([blob],'camera.jpg',{type:'image/jpeg'});
+    const url=await uploadToCloudinary(file);
+    if(url)imgUrl=url;
+  }
+  const cam={brand:document.getElementById('c-brand').value||'未命名',model:document.getElementById('c-model').value||'',type:document.getElementById('c-type').value,format:document.getElementById('c-format').value,lens:document.getElementById('c-lens').value,status:document.getElementById('c-status').value,price:document.getElementById('c-price').value,note:document.getElementById('c-note').value,img:imgUrl,lenses:existing.lenses||[]};
   if(idx>=0)data.cameras[idx]=cam;else data.cameras.push(cam);
   syncType('cameras');render();closeOv();
 }
-function saveFilm(){
+async function saveFilm(){
   const idx=editIdx.film;
-  const film={brand:document.getElementById('f-brand').value||'未命名',name:document.getElementById('f-name').value||'',iso:document.getElementById('f-iso').value,type:document.getElementById('f-type').value,stock:document.getElementById('f-stock').value||0,price:document.getElementById('f-price').value,color:pickedColor,img:getImg('f-img-prev',idx>=0?data.films[idx].img:'')};
+  let imgUrl=idx>=0?data.films[idx].img:'';
+  const prevEl=document.getElementById('f-img-prev');
+  if(prevEl&&prevEl.style.display!=='none'&&prevEl.src.startsWith('data:')){
+    const res=await fetch(prevEl.src);const blob=await res.blob();
+    const file=new File([blob],'film.jpg',{type:'image/jpeg'});
+    const url=await uploadToCloudinary(file);
+    if(url)imgUrl=url;
+  }
+  const film={brand:document.getElementById('f-brand').value||'未命名',name:document.getElementById('f-name').value||'',iso:document.getElementById('f-iso').value,type:document.getElementById('f-type').value,stock:document.getElementById('f-stock').value||0,price:document.getElementById('f-price').value,color:pickedColor,img:imgUrl};
   if(idx>=0)data.films[idx]=film;else data.films.push(film);
   syncType('films');render();closeOv();
 }
@@ -823,8 +863,21 @@ function saveRoll(){
   if(idx>=0)data.rolls[idx]=roll;else data.rolls.push(roll);
   syncType('rolls');render();closeOv();
 }
-function saveFeatured(){
-  featured={title:document.getElementById('feat-title').value,caption:document.getElementById('feat-cap-input').value,img:getImg('feat-img-prev',featured.img||'')};
+async function saveFeatured(){
+  const titleVal=document.getElementById('feat-title').value;
+  const capVal=document.getElementById('feat-cap-input').value;
+  const prevEl=document.getElementById('feat-img-prev');
+  let imgUrl=featured.img||'';
+  // If user selected a new local image, upload it
+  if(prevEl&&prevEl.style.display!=='none'&&prevEl.src.startsWith('data:')){
+    showLoad('上傳精選照片...');
+    const res=await fetch(prevEl.src);
+    const blob=await res.blob();
+    const file=new File([blob],'featured.jpg',{type:'image/jpeg'});
+    const url=await uploadToCloudinary(file);
+    if(url)imgUrl=url;
+  }
+  featured={title:titleVal,caption:capVal,img:imgUrl};
   localStorage.setItem(LS_FEAT,JSON.stringify(featured));render();closeOv();
 }
 
